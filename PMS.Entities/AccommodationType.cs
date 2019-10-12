@@ -9,7 +9,8 @@ namespace PMS.Entities
     public class AccommodationType
     {
         public int ID { get; set; }
-        public string Name { get; set; } 
-        public string Descripttion { get; set; } 
+        public string Name { get; set; }
+        public string Descripttion { get; set; }
 
     }
+}
