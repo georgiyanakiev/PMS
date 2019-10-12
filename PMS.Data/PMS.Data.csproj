@@ -51,10 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201910122250491_BasicEntities.cs" />
-    <Compile Include="Migrations\201910122250491_BasicEntities.designer.cs">
-      <DependentUpon>201910122250491_BasicEntities.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PMSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,11 +64,6 @@
       <Project>{FA79F960-D012-4716-A464-3FA32DACB3D5}</Project>
       <Name>PMS.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910122250491_BasicEntities.resx">
-      <DependentUpon>201910122250491_BasicEntities.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
