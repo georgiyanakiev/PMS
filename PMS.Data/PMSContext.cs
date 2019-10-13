@@ -14,6 +14,12 @@ namespace PMS.Data
         {
         }
 
+
+        public static PMSContext Create()
+        {
+            return new PMSContext();
+        }
+
         public DbSet<AccommodationType> AccommodationTypes { get; set; }
         public DbSet<AccommodationPackage> AccommodationPackages { get; set; }
         public DbSet<Accommodation> Accommodations { get; set; }
