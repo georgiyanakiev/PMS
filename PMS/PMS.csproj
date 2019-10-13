@@ -180,7 +180,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -298,6 +297,10 @@
     <ProjectReference Include="..\PMS.Data\PMS.Data.csproj">
       <Project>{98FE6119-890E-48D8-A719-83C794C8D6BB}</Project>
       <Name>PMS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Entities\PMS.Entities.csproj">
+      <Project>{FA79F960-D012-4716-A464-3FA32DACB3D5}</Project>
+      <Name>PMS.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

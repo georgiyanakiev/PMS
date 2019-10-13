@@ -1,4 +1,5 @@
-﻿using PMS.Entities;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using PMS.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PMS.Data
 {
-    public class PMSContext : DbContext
+    public class PMSContext : IdentityDbContext
     {
         public PMSContext() : base("PMSConnectionString")
         {
