@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace PMS.Areas.Dashboard.Controllers
-{   [Authorize(Roles ="Administrator")]
+{   /*[Authorize(Roles ="Administrator")]*/
     public class DashboardController : Controller
     {
         // GET: Dashboard/Dashboard

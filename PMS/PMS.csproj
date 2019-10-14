@@ -173,8 +173,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\AccommodationTypesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Dashboard\ViewModels\AccommodationTypesModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,6 +184,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1811,6 +1814,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -1929,6 +1933,13 @@
     <Content Include="Areas\Dashboard\Content\css\fa-solid-900.ttf" />
     <Content Include="Areas\Dashboard\Content\css\fa-solid-900.woff" />
     <Content Include="Areas\Dashboard\Content\css\fa-solid-900.woff2" />
+    <Content Include="Areas\Dashboard\Views\AccommodationTypes\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\AccommodationTypes\_Listing.cshtml" />
+    <Content Include="Areas\Dashboard\Views\AccommodationTypes\_Action.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2015,6 +2026,10 @@
     <ProjectReference Include="..\PMS.Entities\PMS.Entities.csproj">
       <Project>{FA79F960-D012-4716-A464-3FA32DACB3D5}</Project>
       <Name>PMS.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Services\PMS.Services.csproj">
+      <Project>{C734F1AD-A0C7-46FA-BB05-DBB59F440A2E}</Project>
+      <Name>PMS.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
