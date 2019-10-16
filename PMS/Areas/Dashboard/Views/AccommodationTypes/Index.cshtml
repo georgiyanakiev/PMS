@@ -1,4 +1,4 @@
-﻿
+﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationTypesListingModels
 @{
     ViewBag.Title = "Index";
 }
@@ -13,22 +13,24 @@
 
 <div class="row mb-3">
     <div class="col col-lg-12">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="button"><i class="fas fa-search mr-1"></i>Search</button>
-                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-redo mr-1"></i>Reset</button>
-                <button data-href="@Url.Action("Action", "AccommodationTypes")" class="data-btn btn btn-outline-success" type="button" data-toggle="modal" data-target="#actionModal"><i class="fas fa-plus-circle mr-1"></i>Create</button>
-            </div>
-        </div>
-        <hr />
+        <form>
+            <div class="input-group">
+                <input type="text" name="searchTerm" class="form-control" placeholder="Search" value="@Model.SearchTerm" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search mr-1"></i>Search</button>
+                        <a class="btn btn-outline-secondary" href="@Url.Action("Index", "AccommodationTypes")"><i class="fas fa-redo mr-1"></i>Reset</a>
+                        <button data-href="@Url.Action("Action", "AccommodationTypes")" class="data-btn btn btn-outline-success" type="button" data-toggle="modal" data-target="#actionModal"><i class="fas fa-plus-circle mr-1"></i>Create</button>
+                    </div>
+                </div>
+        </form>
     </div>
-</div>
+  </div>   
+
 
 <div class="row">
     <div class="col col-lg-12">
         @{
-            Html.RenderAction("Listing");
+            Html.RenderPartial("_Listing", Model);
         }
         <hr />
     </div>

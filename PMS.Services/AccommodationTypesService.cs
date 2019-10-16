@@ -10,11 +10,25 @@ namespace PMS.Services
 {
     public class AccommodationTypesService
     {
-        public IEnumerable<AccommodationType> GetAllAccommodationTypes() 
+        public IEnumerable<AccommodationType> SearchAccommodationTypes() 
         {
             var context = new PMSContext();
 
             return context.AccommodationTypes.ToList();
+        }
+
+        public IEnumerable<AccommodationType> SearchAccommodationTypes(string searchTerm)
+        {
+            var context = new PMSContext();
+
+            var accommodationTypes = context.AccommodationTypes.AsQueryable();
+
+            if(!string.IsNullOrEmpty(searchTerm))
+            {
+                accommodationTypes = accommodationTypes.Where(a => a.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            return accommodationTypes.ToList();
         }
         public AccommodationType GetAccommodationTypeByID(int ID)
         {
@@ -35,6 +49,14 @@ namespace PMS.Services
             var context = new PMSContext();
 
             context.Entry(accommodationType).State = System.Data.Entity.EntityState.Modified;
+
+            return context.SaveChanges() > 0;
+        }
+        public bool DeleteAccommodationType(AccommodationType accommodationType)
+        {
+            var context = new PMSContext();
+
+            context.Entry(accommodationType).State = System.Data.Entity.EntityState.Deleted;
 
             return context.SaveChanges() > 0;
         }

@@ -12,24 +12,25 @@ namespace PMS.Areas.Dashboard.Controllers
     public class AccommodationTypesController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Listing()
+
+        public ActionResult Index(string searchTerm)
         {
             AccommodationTypesListingModels model = new AccommodationTypesListingModels();
 
-            model.AccommodationTypes = accommodationTypesService.GetAllAccommodationTypes();
+            model.SearchTerm = searchTerm;
 
-            return PartialView("_Listing", model);
+            model.AccommodationTypes = accommodationTypesService.SearchAccommodationTypes(searchTerm);
+
+            
+            return View(model);
         }
+       
         [HttpGet]
         public ActionResult Action(int? ID)
         {
             AccommodationTypeActionModels model = new AccommodationTypeActionModels();
 
-            if(ID.HasValue)
+            if (ID.HasValue)
             {
                 var accommodationType = accommodationTypesService.GetAccommodationTypeByID(ID.Value);
 
@@ -37,7 +38,7 @@ namespace PMS.Areas.Dashboard.Controllers
                 model.Name = accommodationType.Name;
                 model.Descripttion = accommodationType.Description;
             }
-           
+
 
             return PartialView("_Action", model);
         }
@@ -47,7 +48,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
             JsonResult json = new JsonResult();
             var result = false;
-            if(model.ID > 0)
+            if (model.ID > 0)
             {
                 var accommodationType = accommodationTypesService.GetAccommodationTypeByID(model.ID);
                 accommodationType.Name = model.Name;
@@ -67,7 +68,40 @@ namespace PMS.Areas.Dashboard.Controllers
                 result = accommodationTypesService.SaveAccommodationType(accommodationType);
             }
 
-           if (result)
+            if (result)
+            {
+                json.Data = new { Success = true };
+            }
+            else
+            {
+                json.Data = new { Success = false, Meesage = "Unable to perform action on Accommodation Types" };
+            }
+            return json;
+        }
+        [HttpGet]
+        public ActionResult Delete(int ID)
+        {
+            AccommodationTypeActionModels model = new AccommodationTypeActionModels();
+
+            var accommodationType = accommodationTypesService.GetAccommodationTypeByID(ID);
+
+            model.ID = accommodationType.ID;
+
+
+            return PartialView("_Delete", model);
+        }
+        [HttpPost]
+        public JsonResult Delete(AccommodationTypeActionModels model)
+        {
+
+            JsonResult json = new JsonResult();
+            var result = false;
+
+            var accommodationType = accommodationTypesService.GetAccommodationTypeByID(model.ID);
+            result = accommodationTypesService.DeleteAccommodationType(accommodationType);
+            
+
+            if (result)
             {
                 json.Data = new { Success = true };
             }
@@ -78,5 +112,4 @@ namespace PMS.Areas.Dashboard.Controllers
             return json;
         }
     }
-
 }

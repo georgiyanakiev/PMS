@@ -9,6 +9,7 @@ namespace PMS.Areas.Dashboard.ViewModels
     public class AccommodationTypesListingModels
     {
         public IEnumerable<AccommodationType> AccommodationTypes{ get; set; }
+        public string SearchTerm { get; set; }
     }
 
     public class AccommodationTypeActionModels
