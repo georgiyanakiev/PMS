@@ -11,7 +11,7 @@ namespace PMS.Areas.Dashboard.Controllers
 {
     public class AccommodationTypesController : Controller
     {
-        AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
+        accommodationTypesService accommodationTypesService = new accommodationTypesService();
 
         public ActionResult Index(string searchTerm)
         {
@@ -36,7 +36,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
                 model.ID = accommodationType.ID;
                 model.Name = accommodationType.Name;
-                model.Descripttion = accommodationType.Description;
+                model.Description = accommodationType.Description;
             }
 
 
@@ -52,7 +52,7 @@ namespace PMS.Areas.Dashboard.Controllers
             {
                 var accommodationType = accommodationTypesService.GetAccommodationTypeByID(model.ID);
                 accommodationType.Name = model.Name;
-                accommodationType.Description = model.Descripttion;
+                accommodationType.Description = model.Description;
 
                 result = accommodationTypesService.UpdateAccommodationType(accommodationType);
             }
@@ -61,7 +61,7 @@ namespace PMS.Areas.Dashboard.Controllers
                 AccommodationType accommodationType = new AccommodationType();
 
                 accommodationType.Name = model.Name;
-                accommodationType.Description = model.Descripttion;
+                accommodationType.Description = model.Description;
 
 
 
