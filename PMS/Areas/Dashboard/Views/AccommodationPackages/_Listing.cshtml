@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
+                <th scope="col">Fee Per Night</th>
                 <th scope="col">Accommodation Type</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -16,6 +17,9 @@
             <tr>
                 <td>
                     @accommodationPackage.Name
+                </td>
+                <td>
+                    @accommodationPackage.FeePerNight £
                 </td>
                 <td>
                     @if (accommodationPackage.AccommodationType != null)
