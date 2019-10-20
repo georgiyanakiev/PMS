@@ -1,4 +1,5 @@
-﻿using PMS.Entities;
+﻿using PMS.ViewModels;
+using PMS.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,17 @@ namespace PMS.Areas.Dashboard.ViewModels
     {
         public IEnumerable<AccommodationPackage> AccommodationPackages { get; set; }
         public string SearchTerm { get; set; }
+        public IEnumerable<AccommodationType> AccommodationTypes { get; set; }
+        public int? AccommodationTypeID { get; set; }
+
+        public Pager Pager { get; set; }
     }
 
     public class AccommodationPackageActionModels
     {
         public int ID { get; set; }
         public int AccommodationTypeID{ get; set; }
-        public virtual AccommodationType AccommodationType { get; set; }
+        public AccommodationType AccommodationType { get; set; }
 
         public string Name { get; set; }
         public int NoOfRoom { get; set; }

@@ -1,6 +1,7 @@
 ﻿using PMS.Areas.Dashboard.ViewModels;
 using PMS.Entities;
 using PMS.Services;
+using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,30 @@ namespace PMS.Areas.Dashboard.Controllers
 {
     public class AccommodationPackagesController : Controller
     {
-        AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        accommodationTypesService accommodationTypesService = new accommodationTypesService();
+       AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
+       AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
 
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string searchTerm,int? accommodationTypeID, int? page)
         {
+
+            int recordSize = 3;
+            page = page ?? 1;
+
             AccommodationPackagesListingModels model = new AccommodationPackagesListingModels();
 
             model.SearchTerm = searchTerm;
+            model.AccommodationTypeID = accommodationTypeID;
 
-            model.AccommodationPackages = accommodationPackagesService.SearchAccommodationPackages(searchTerm);
+            model.AccommodationPackages = accommodationPackagesService.SearchAccommodationPackagesCount(searchTerm, accommodationTypeID, page.Value, recordSize);
+
+            model.AccommodationTypes = accommodationTypesService.GetAllAccommodationTypes();
+
+            var totalRecords = accommodationPackagesService.SearchAccommodationPackagesCount(searchTerm, accommodationTypeID);
+
+            model.Pager = new Pager(totalRecords, page,recordSize);
+
+
+
             return View(model);
         }
 
@@ -54,6 +69,7 @@ namespace PMS.Areas.Dashboard.Controllers
             if (model.ID > 0) //trying to edit a record 
             {
                 var accommodationPackage = accommodationPackagesService.GetAccommodationPackageByID(model.ID);
+
                 accommodationPackage.AccommodationTypeID = model.AccommodationTypeID;
                 accommodationPackage.Name = model.Name;
                 accommodationPackage.NoOfRoom = model.NoOfRoom;

@@ -14,28 +14,69 @@
         <tbody>
             @foreach (var accommodationPackage in Model.AccommodationPackages)
             {
-            <tr>
-                <td>
-                    @accommodationPackage.Name
-                </td>
-                <td>
-                    @accommodationPackage.FeePerNight £
-                </td>
-                <td>
-                    @if (accommodationPackage.AccommodationType != null)
-                    {
-                        @accommodationPackage.AccommodationType.Name
-                    }
-                </td>
+                <tr>
+                    <td>
+                        @accommodationPackage.Name
+                    </td>
+                    <td>
+                        @accommodationPackage.FeePerNight £
+                    </td>
+                    <td>
+                        @if (accommodationPackage.AccommodationType != null)
+                        {
+                            @accommodationPackage.AccommodationType.Name
+                        }
+                    </td>
 
-                <td>
-                    <button data-href="@Url.Action("Action", "AccommodationPackages", new { ID = accommodationPackage.ID })" type="button" class="data-btn btn btn-primary" data-toggle="modal" data-target="#actionModal"><i class="fas fa-edit mr-1"></i>Edit</button>
-                    <button data-href="@Url.Action("Delete", "AccommodationPackages", new { ID = accommodationPackage.ID })" type="button" class="data-btn btn btn-danger" data-toggle="modal" data-target="#actionModal"><i class="far fa-trash-alt mr-1"></i>Delete</button>
-                </td>
-            </tr>
+                    <td>
+                        <button data-href="@Url.Action("Action", "AccommodationPackages", new { ID = accommodationPackage.ID })" type="button" class="data-btn btn btn-primary" data-toggle="modal" data-target="#actionModal"><i class="fas fa-edit mr-1"></i>Edit</button>
+                        <button data-href="@Url.Action("Delete", "AccommodationPackages", new { ID = accommodationPackage.ID })" type="button" class="data-btn btn btn-danger" data-toggle="modal" data-target="#actionModal"><i class="far fa-trash-alt mr-1"></i>Delete</button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+    if (Model.Pager.EndPage > 1)
+    {
+        <nav>
+            <ul class="pagination">
+                @if (Model.Pager.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", "AccommodationPackages")">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", "AccommodationPackages", new { page = Model.Pager.CurrentPage - 1, searchTerm = Model.SearchTerm, accommodationTypeID = Model.AccommodationTypeID })">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                }
+
+                @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                {
+                    <li class="page-item @(page == Model.Pager.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", "AccommodationPackages", new { page = page, searchTerm = Model.SearchTerm, accommodationTypeID = Model.AccommodationTypeID })">@page</a>
+                    </li>
+                }
+
+                @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", "AccommodationPackages", new { page = Model.Pager.CurrentPage + 1, searchTerm = Model.SearchTerm, accommodationTypeID = Model.AccommodationTypeID })">
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", "AccommodationPackages", new { page = Model.Pager.TotalPages, searchTerm = Model.SearchTerm, accommodationTypeID = Model.AccommodationTypeID })">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
 }
 else
 {

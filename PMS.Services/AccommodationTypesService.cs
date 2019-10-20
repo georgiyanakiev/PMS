@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace PMS.Services
 {
-    public class accommodationTypesService
+    public class AccommodationTypesService
     {
-        public IEnumerable<AccommodationType> GetAllAccommodationTypes() 
+        public IEnumerable<AccommodationType> GetAllAccommodationTypes()
         {
             var context = new PMSContext();
 
             return context.AccommodationTypes.ToList();
         }
 
-        public IEnumerable<AccommodationType> SearchAccommodationTypes(string searchTerm)
+        public IEnumerable<AccommodationType> SearchAccommodationTypes(string SearchTerm)
         {
             var context = new PMSContext();
 
-            var accommodationTypes = context.AccommodationPackages.AsQueryable();
+            var accommodationTypes = context.AccommodationTypes.AsQueryable();
 
-            if(!string.IsNullOrEmpty(searchTerm))
+            if (!string.IsNullOrEmpty(SearchTerm))
             {
-                accommodationTypes = accommodationTypes.Where(a => a.Name.ToLower().Contains(searchTerm.ToLower()));
+                accommodationTypes = accommodationTypes.Where(a => a.Name.ToLower().Contains(SearchTerm.ToLower()));
             }
 
-            return context.AccommodationTypes.ToList();
+            return accommodationTypes.ToList();
         }
         public AccommodationType GetAccommodationTypeByID(int ID)
         {

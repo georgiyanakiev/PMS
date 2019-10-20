@@ -11,15 +11,15 @@ namespace PMS.Areas.Dashboard.Controllers
 {
     public class AccommodationTypesController : Controller
     {
-        accommodationTypesService accommodationTypesService = new accommodationTypesService();
+        AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
 
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string SearchTerm)
         {
             AccommodationTypesListingModels model = new AccommodationTypesListingModels();
 
-            model.SearchTerm = searchTerm;
+            model.SearchTerm = SearchTerm;
 
-            model.AccommodationTypes = accommodationTypesService.SearchAccommodationTypes(searchTerm);
+            model.AccommodationTypes = accommodationTypesService.SearchAccommodationTypes(SearchTerm);
 
             
             return View(model);

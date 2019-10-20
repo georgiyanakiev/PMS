@@ -10,7 +10,7 @@ namespace PMS.Entities
     {
         public int ID { get; set; }
         public int AccommodationPackageID { get; set; }
-        public AccommodationPackage AccommodationPackage { get; set; }
+        public virtual AccommodationPackage AccommodationPackage { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         

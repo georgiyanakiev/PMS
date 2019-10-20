@@ -10,30 +10,61 @@ namespace PMS.Services
 {
     public class AccommodationPackagesService
     {
+        
         public IEnumerable<AccommodationPackage> GetAllAccommodationPackages()
         {
             var context = new PMSContext();
 
-            return context.AccommodationPackages.ToList();
+            return context.accommodationPackages.ToList();
         }
-        public IEnumerable<AccommodationPackage> SearchAccommodationPackages(string searchTerm)
+        public IEnumerable<AccommodationPackage> SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID, int page, int recordSize)
         {
             var context = new PMSContext();
 
-            var accommodationPackages = context.AccommodationPackages.AsQueryable();
+            var accommodationPackages = context.accommodationPackages.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 accommodationPackages = accommodationPackages.Where(a => a.Name.ToLower().Contains(searchTerm.ToLower()));
             }
-            
-            return context.AccommodationPackages.ToList();
+
+            if (accommodationTypeID.HasValue && accommodationTypeID.Value > 0)
+            {
+                accommodationPackages = accommodationPackages.Where(a => a.AccommodationTypeID == accommodationTypeID.Value);
+            }
+
+            var skip = (page - 1) * recordSize;
+            //  skip = (1    -  1) = 0 * 3 = 0
+            //  skip = (2    -  1) = 1 * 3 = 3
+            //  skip = (3    -  1) = 2 * 3 = 6
+
+            return accommodationPackages.OrderBy(x => x.AccommodationTypeID).Skip(skip).Take(recordSize).ToList();
+        }
+
+        public int SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID)
+        {
+            var context = new PMSContext();
+
+            var accommodationPackages = context.accommodationPackages.AsQueryable();
+
+            if  (!string.IsNullOrEmpty(searchTerm))
+            {
+                accommodationPackages = accommodationPackages.Where(a => a.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+            if  (accommodationTypeID.HasValue && accommodationTypeID.Value > 0)
+            {
+                accommodationPackages = accommodationPackages.Where(a => a.AccommodationTypeID == accommodationTypeID.Value);
+            }
+
+           
+
+            return context.accommodationPackages.Count();
         }
         public AccommodationPackage GetAccommodationPackageByID(int ID)
         {   
             using (var context = new PMSContext())
             {
-                return context.AccommodationPackages.Find(ID);
+                return context.accommodationPackages.Find(ID);
             }
 
             
@@ -42,7 +73,7 @@ namespace PMS.Services
         {
             var context = new PMSContext();
 
-            context.AccommodationPackages.Add(accommodationPackage);
+            context.accommodationPackages.Add(accommodationPackage);
 
             return context.SaveChanges() > 0;
         }
