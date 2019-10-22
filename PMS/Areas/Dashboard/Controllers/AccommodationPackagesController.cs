@@ -18,7 +18,7 @@ namespace PMS.Areas.Dashboard.Controllers
         public ActionResult Index(string searchTerm,int? accommodationTypeID, int? page)
         {
 
-            int recordSize = 3;
+            int recordSize = 5;
             page = page ?? 1;
 
             AccommodationPackagesListingModels model = new AccommodationPackagesListingModels();
