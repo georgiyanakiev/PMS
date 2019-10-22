@@ -88,7 +88,7 @@ namespace PMS.Areas.Dashboard.Controllers
             }
             else
             {
-                json.Data = new { Success = false, Message = "Unable to perform action on Accomodation." };
+                json.Data = new { Success = false, Message = "Unable to perform action on Accommodation." };
             }
 
             return json;
@@ -123,7 +123,7 @@ namespace PMS.Areas.Dashboard.Controllers
             }
             else
             {
-                json.Data = new { Success = false, Message = "Unable to perform action on Accomodation." };
+                json.Data = new { Success = false, Message = "Unable to perform action on Accommodation." };
             }
 
             return json;
