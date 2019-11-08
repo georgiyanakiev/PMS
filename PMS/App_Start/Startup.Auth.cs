@@ -8,6 +8,7 @@ using Owin;
 using PMS.Data;
 using PMS.Entities;
 using PMS.Models;
+using PMS.Services;
 
 namespace PMS
 {
@@ -18,8 +19,8 @@ namespace PMS
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(PMSContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext<PMSUserManager>(PMSUserManager.Create);
+            app.CreatePerOwinContext<PMSSignInManager>(PMSSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -32,7 +33,7 @@ namespace PMS
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, PMSUser>(
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<PMSUserManager, PMSUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
