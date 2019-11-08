@@ -13,13 +13,6 @@ namespace PMS.Areas.Dashboard.Controllers
 {
     public class UsersController : Controller
     {
-        public string Name { get; set; }
-
-
-
-
-
-
         private PMSSignInManager _signInManager;
         private PMSUserManager _userManager;
         public PMSSignInManager SignInManager
