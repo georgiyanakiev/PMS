@@ -54,7 +54,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
         public ActionResult Index(string searchTerm, string roleID, int? page)
         {
-            int recordSize = 5;
+            int recordSize = 1;
             page = page ?? 1;
 
             UsersListingModel model = new UsersListingModel();
