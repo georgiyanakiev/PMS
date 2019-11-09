@@ -63,14 +63,51 @@ namespace PMS.Areas.Dashboard.Controllers
             model.RoleID = roleID;
             //model.Roles = accommodationPackagesService.GetAllAccommodationPackages();
 
-            model.Users = UserManager.Users;
-            var totalRecords = 0; // accommodationsService.SearchAccommodationsCount(searchTerm, roleID);
+            model.Users = SeаrchUsers(searchTerm, roleID, page.Value, recordSize);
+            var totalRecords = SeаrchUsersCount(searchTerm, roleID);
 
             model.Pager = new Pager(totalRecords, page, recordSize);
 
             return View(model);
         }
+        public IEnumerable<PMSUser> SeаrchUsers(string searchTerm, string roleID, int page, int recordSize)
 
+        {
+            var users = UserManager.Users.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(roleID))
+            {
+                //users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            var skip = (page - 1) * recordSize;
+
+            return users.OrderBy(x => x.Email).Skip(skip).Take(recordSize).ToList();
+        }
+
+        public int SeаrchUsersCount(string searchTerm, string roleID)
+        {
+            var users = UserManager.Users.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(roleID))
+            {
+                //users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+
+
+            return users.Count();
+        }
         [HttpGet]
         public ActionResult Action(int? ID)
         {
