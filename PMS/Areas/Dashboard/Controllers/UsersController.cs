@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using PMS.Areas.Dashboard.ViewModels;
 using PMS.Entities;
 using PMS.Services;
@@ -6,6 +7,7 @@ using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -109,61 +111,69 @@ namespace PMS.Areas.Dashboard.Controllers
             return users.Count();
         }
         [HttpGet]
-        public ActionResult Action(int? ID)
+        public async Task<ActionResult> Action(string ID)
         {
-            AccommodationActionModel model = new AccommodationActionModel();
+           UserActionModel model = new UserActionModel();
 
-            if (ID.HasValue) //we are trying to edit a record
+            if (string.IsNullOrEmpty(ID)) //we are trying to edit a record
             {
-                var accommodation = accommodationsService.GetAccommodationByID(ID.Value);
+                var user = await UserManager.FindByIdAsync(ID);
 
-                model.ID = accommodation.ID;
-                model.AccommodationPackageID = accommodation.AccommodationPackageID;
-                model.Name = accommodation.Name;
-                model.Description = accommodation.Description;
+                model.ID = user.Id;
+                model.FullName = user.FullName;
+                model.Email = user.Email;
+                model.UserName = user.UserName;
+                model.Country = user.Country;
+                model.City = user.City;
+                model.Address = user.Address;
             }
 
-            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackages();
+            
 
             return PartialView("_Action", model);
         }
 
         [HttpPost]
-        public JsonResult Action(AccommodationActionModel model)
+        public async Task<JsonResult> Action(UserActionModel model)
         {
             JsonResult json = new JsonResult();
 
-            var result = false;
+            IdentityResult result = null;
 
-            if (model.ID > 0) //we are trying to edit a record
-            {
-                var accommodation = accommodationsService.GetAccommodationByID(model.ID);
+            if  (string.IsNullOrEmpty(model.ID)) //we are trying to edit a record
+                {
+                var user = await UserManager.FindByIdAsync(model.ID);
 
-                accommodation.AccommodationPackageID = model.AccommodationPackageID;
-                accommodation.Name = model.Name;
-                accommodation.Description = model.Description;
+                user.FullName = model.FullName;
+                user.Email = model.Email;
+                user.UserName = model.UserName;
 
-                result = accommodationsService.UpdateAccommodation(accommodation);
+                user.Country = model.Country;
+                user.City = model.City;
+                user.Address = model.Address;
+
+               result = await UserManager.UpdateAsync(user);
+
+              
+
             }
             else //we are trying to create a record
             {
-                Accommodation accommodation = new Accommodation();
+                var user = new PMSUser();
 
-                accommodation.AccommodationPackageID = model.AccommodationPackageID;
-                accommodation.Name = model.Name;
-                accommodation.Description = model.Description;
+                user.FullName = model.FullName;
+                user.Email = model.Email;
+                user.UserName = model.UserName;
 
-                result = accommodationsService.SaveAccommodation(accommodation);
+                user.Country = model.Country;
+                user.City = model.City;
+                user.Address = model.Address;
+
+                result = await UserManager.CreateAsync(user);
             }
 
-            if (result)
-            {
-                json.Data = new { Success = true };
-            }
-            else
-            {
-                json.Data = new { Success = false, Message = "Unable to perform action on Accommodation." };
-            }
+          
+            json.Data = new { Success = result.Succeeded, Message = string.Join(",", result.Errors) };
 
             return json;
         }
