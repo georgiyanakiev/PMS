@@ -1157,7 +1157,7 @@ images:
     - portrait
     - sliders-h
     - tint
-  label: Images
+  label: images
 interfaces:
   icons:
     - award
