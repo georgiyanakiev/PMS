@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@ViewBag.Title - ChromiumPMS</title>
- 
+
     <link href="~/Areas/Dashboard/Content/fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
     <link href="~/Areas/Dashboard/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Areas/Dashboard/Content/css/simple-sidebar.css" rel="stylesheet" />
@@ -49,7 +49,7 @@
         <div id="page-content-wrapper">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-warning" id="menu-toggle">
+                <button class="btn btn-primary" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -77,15 +77,12 @@
         </div>
     </div>
 
-    @using (Html.BeginForm("LogOff", "Account",new { area = "Dashboard" },  FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    @using (Html.BeginForm("LogOff", "Account", new { area = "Dashboard" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-         @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
     }
     <!-- /#wrapper -->
     <!-- Bootstrap core JavaScript -->
-
-    
-    
     <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function (e) {

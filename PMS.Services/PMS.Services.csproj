@@ -81,6 +81,7 @@
     <Compile Include="AccommodationPackagesService.cs" />
     <Compile Include="AccommodationService.cs" />
     <Compile Include="AccommodationTypesService.cs" />
+    <Compile Include="PMSRolesManager.cs" />
     <Compile Include="PMSSignInManager.cs" />
     <Compile Include="PMSUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

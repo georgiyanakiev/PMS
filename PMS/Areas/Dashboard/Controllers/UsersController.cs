@@ -17,6 +17,8 @@ namespace PMS.Areas.Dashboard.Controllers
     {
         private PMSSignInManager _signInManager;
         private PMSUserManager _userManager;
+        private PMSRoleManager _roleManager;
+
         public PMSSignInManager SignInManager
         {
             get
@@ -28,7 +30,6 @@ namespace PMS.Areas.Dashboard.Controllers
                 _signInManager = value;
             }
         }
-
         public PMSUserManager UserManager
         {
             get
@@ -40,40 +41,50 @@ namespace PMS.Areas.Dashboard.Controllers
                 _userManager = value;
             }
         }
+        public PMSRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<PMSRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
 
         public UsersController()
         {
         }
 
-        public UsersController(PMSUserManager userManager, PMSSignInManager signInManager)
+        public UsersController(PMSUserManager userManager, PMSSignInManager signInManager, PMSRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
-        AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationService accommodationsService = new AccommodationService();
-
-        public ActionResult Index(string searchTerm, string roleID, int? page)
+        public async Task<ActionResult> Index(string searchTerm, string roleID, int? page)
         {
-            int recordSize = 1;
+            int recordSize = 10;
             page = page ?? 1;
 
             UsersListingModel model = new UsersListingModel();
 
             model.SearchTerm = searchTerm;
             model.RoleID = roleID;
-            //model.Roles = accommodationPackagesService.GetAllAccommodationPackages();
+            model.Roles = RoleManager.Roles.ToList();
 
-            model.Users = SeаrchUsers(searchTerm, roleID, page.Value, recordSize);
-            var totalRecords = SeаrchUsersCount(searchTerm, roleID);
+            model.Users = await SearchUsers(searchTerm, roleID, page.Value, recordSize);
+
+            var totalRecords = await SearchUsersCount(searchTerm, roleID);
 
             model.Pager = new Pager(totalRecords, page, recordSize);
 
             return View(model);
         }
-        public IEnumerable<PMSUser> SeаrchUsers(string searchTerm, string roleID, int page, int recordSize)
 
+        public async Task<IEnumerable<PMSUser>> SearchUsers(string searchTerm, string roleID, int page, int recordSize)
         {
             var users = UserManager.Users.AsQueryable();
 
@@ -84,7 +95,11 @@ namespace PMS.Areas.Dashboard.Controllers
 
             if (!string.IsNullOrEmpty(roleID))
             {
-                //users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+                var role = await RoleManager.FindByIdAsync(roleID);
+
+                var userIDs = role.Users.Select(x => x.UserId).ToList();
+
+                users = users.Where(x => userIDs.Contains(x.Id));
             }
 
             var skip = (page - 1) * recordSize;
@@ -92,7 +107,7 @@ namespace PMS.Areas.Dashboard.Controllers
             return users.OrderBy(x => x.Email).Skip(skip).Take(recordSize).ToList();
         }
 
-        public int SeаrchUsersCount(string searchTerm, string roleID)
+        public async Task<int> SearchUsersCount(string searchTerm, string roleID)
         {
             var users = UserManager.Users.AsQueryable();
 
@@ -103,19 +118,22 @@ namespace PMS.Areas.Dashboard.Controllers
 
             if (!string.IsNullOrEmpty(roleID))
             {
-                //users = users.Where(a => a.Email.ToLower().Contains(searchTerm.ToLower()));
+                var role = await RoleManager.FindByIdAsync(roleID);
+
+                var userIDs = role.Users.Select(x => x.UserId).ToList();
+
+                users = users.Where(x => userIDs.Contains(x.Id));
             }
-
-
 
             return users.Count();
         }
+
         [HttpGet]
         public async Task<ActionResult> Action(string ID)
         {
-           UserActionModel model = new UserActionModel();
+            UserActionModel model = new UserActionModel();
 
-            if (string.IsNullOrEmpty(ID)) //we are trying to edit a record
+            if (!string.IsNullOrEmpty(ID)) //we are trying to edit a record
             {
                 var user = await UserManager.FindByIdAsync(ID);
 
@@ -128,8 +146,6 @@ namespace PMS.Areas.Dashboard.Controllers
                 model.Address = user.Address;
             }
 
-            
-
             return PartialView("_Action", model);
         }
 
@@ -140,22 +156,18 @@ namespace PMS.Areas.Dashboard.Controllers
 
             IdentityResult result = null;
 
-            if  (string.IsNullOrEmpty(model.ID)) //we are trying to edit a record
-                {
+            if (!string.IsNullOrEmpty(model.ID)) //we are trying to edit a record
+            {
                 var user = await UserManager.FindByIdAsync(model.ID);
 
                 user.FullName = model.FullName;
                 user.Email = model.Email;
                 user.UserName = model.UserName;
-
                 user.Country = model.Country;
                 user.City = model.City;
                 user.Address = model.Address;
 
-               result = await UserManager.UpdateAsync(user);
-
-              
-
+                result = await UserManager.UpdateAsync(user);
             }
             else //we are trying to create a record
             {
@@ -164,7 +176,6 @@ namespace PMS.Areas.Dashboard.Controllers
                 user.FullName = model.FullName;
                 user.Email = model.Email;
                 user.UserName = model.UserName;
-
                 user.Country = model.Country;
                 user.City = model.City;
                 user.Address = model.Address;
@@ -172,46 +183,91 @@ namespace PMS.Areas.Dashboard.Controllers
                 result = await UserManager.CreateAsync(user);
             }
 
-          
-            json.Data = new { Success = result.Succeeded, Message = string.Join(",", result.Errors) };
+            json.Data = new { Success = result.Succeeded, Message = string.Join(", ", result.Errors) };
 
             return json;
         }
 
         [HttpGet]
-        public ActionResult Delete(int ID)
+        public async Task<ActionResult> Delete(string ID)
         {
-            AccommodationActionModel model = new AccommodationActionModel();
+            UserActionModel model = new UserActionModel();
 
-            var accommodation = accommodationsService.GetAccommodationByID(ID);
+            var user = await UserManager.FindByIdAsync(ID);
 
-            model.ID = accommodation.ID;
+            model.ID = user.Id;
 
             return PartialView("_Delete", model);
         }
 
         [HttpPost]
-        public JsonResult Delete(AccommodationActionModel model)
+        public async Task<JsonResult> Delete(UserActionModel model)
         {
             JsonResult json = new JsonResult();
 
-            var result = false;
+            IdentityResult result = null;
 
-            var accommodation = accommodationsService.GetAccommodationByID(model.ID);
-
-            result = accommodationsService.DeleteAccommodation(accommodation);
-
-            if (result)
+            if (!string.IsNullOrEmpty(model.ID)) //we are trying to delete a record
             {
-                json.Data = new { Success = true };
+                var user = await UserManager.FindByIdAsync(model.ID);
+
+                result = await UserManager.DeleteAsync(user);
+
+                json.Data = new { Success = result.Succeeded, Message = string.Join(", ", result.Errors) };
             }
             else
             {
-                json.Data = new { Success = false, Message = "Unable to perform action on Accommodation." };
+                json.Data = new { Success = false, Message = "Invalid user." };
             }
 
             return json;
         }
 
+        [HttpGet]
+        public async Task<ActionResult> UserRoles(string ID)
+        {
+            UserRolesModel model = new UserRolesModel();
+
+            model.UserID = ID;
+            var user = await UserManager.FindByIdAsync(ID);
+            var userRoleIDs = user.Roles.Select(x => x.RoleId).ToList();
+
+            model.UserRoles = RoleManager.Roles.Where(x => userRoleIDs.Contains(x.Id)).ToList();
+            model.Roles = RoleManager.Roles.Where(x => !userRoleIDs.Contains(x.Id)).ToList();
+
+            return PartialView("_UserRoles", model);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UserRoleOperation(string userID, string roleID, bool isDelete = false)
+        {
+            JsonResult json = new JsonResult();
+
+            var user = await UserManager.FindByIdAsync(userID);
+
+            var role = await RoleManager.FindByIdAsync(roleID);
+
+            if (user != null && role != null)
+            {
+                IdentityResult result = null;
+
+                if (!isDelete)
+                {
+                    result = await UserManager.AddToRoleAsync(userID, role.Name);
+                }
+                else
+                {
+                    result = await UserManager.RemoveFromRoleAsync(userID, role.Name);
+                }
+
+                json.Data = new { Success = result.Succeeded, Message = string.Join(",", result.Errors) };
+            }
+            else
+            {
+                json.Data = new { Success = false, Message = "Invalid operation." };
+            }
+
+            return json;
+        }
     }
 }
