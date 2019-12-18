@@ -17,7 +17,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
         public ActionResult Index(string searchTerm, int? accommodationPackageID, int? page)
         {
-            int recordSize = 5;
+            int recordSize = 6;
             page = page ?? 1;
 
             AccommodationsViewModels model = new AccommodationsViewModels();
@@ -26,7 +26,7 @@ namespace PMS.Areas.Dashboard.Controllers
             model.AccommodationPackageID = accommodationPackageID;
             model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackages();
 
-            var accommodations = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
+            model.Accommodations = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
             var totalRecords = accommodationsService.SearchAccommodationsCount(searchTerm, accommodationPackageID);
 
             model.Pager = new Pager(totalRecords, page, recordSize);
