@@ -71,7 +71,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
                 result = accommodationsService.UpdateAccommodation(accommodation);
             }
-            else //we are trying to create a record
+            else 
             {
                 Accommodation accommodation = new Accommodation();
 
