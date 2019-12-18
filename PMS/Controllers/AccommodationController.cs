@@ -22,9 +22,10 @@ namespace PMS.Controllers
 
             model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
 
-            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(model.Accommodation.First().ID);
+            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
 
-            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
+            var SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
+            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(SelectedAccommodationPackageID);
 
             return View(model);
         }
