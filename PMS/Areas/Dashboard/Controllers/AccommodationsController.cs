@@ -1,12 +1,12 @@
-﻿using PMS.Entities;
+﻿using PMS.Areas.Dashboard.ViewModels;
+using PMS.Entities;
+using PMS.Services;
 using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PMS.Areas.Dashboard.ViewModels;
-using PMS.Services;
 
 namespace PMS.Areas.Dashboard.Controllers
 {
@@ -17,10 +17,10 @@ namespace PMS.Areas.Dashboard.Controllers
 
         public ActionResult Index(string searchTerm, int? accommodationPackageID, int? page)
         {
-            int recordSize = 6;
+            int recordSize = 5;
             page = page ?? 1;
 
-            AccommodationsViewModels model = new AccommodationsViewModels();
+            AccommodationsListingModel model = new AccommodationsListingModel();
 
             model.SearchTerm = searchTerm;
             model.AccommodationPackageID = accommodationPackageID;
