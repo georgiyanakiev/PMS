@@ -41,6 +41,11 @@ namespace PMS.Services
             return accommodationPackages.OrderBy(x => x.AccommodationTypeID).Skip(skip).Take(recordSize).ToList();
         }
 
+        public IEnumerable<AccommodationPackage> GetAllAccommodationPackagesByAccommodationType(int iD)
+        {
+            throw new NotImplementedException();
+        }
+
         public int SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID)
         {
             var context = new PMSContext();

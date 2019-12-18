@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 
-namespace HMS.Controllers
+namespace PMS.Controllers
 {
     public class AccommodationController : Controller
     {
@@ -22,9 +22,9 @@ namespace HMS.Controllers
 
             model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
 
-            //model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(model.Accommodation.First().ID);
+            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(model.Accommodation.First().ID);
 
-            //model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
+            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
 
             return View(model);
         }

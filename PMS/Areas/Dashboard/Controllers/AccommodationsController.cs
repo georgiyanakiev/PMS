@@ -26,7 +26,7 @@ namespace PMS.Areas.Dashboard.Controllers
             model.AccommodationPackageID = accommodationPackageID;
             model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackages();
 
-            var Accommodation = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
+            var accommodations = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
             var totalRecords = accommodationsService.SearchAccommodationsCount(searchTerm, accommodationPackageID);
 
             model.Pager = new Pager(totalRecords, page, recordSize);
