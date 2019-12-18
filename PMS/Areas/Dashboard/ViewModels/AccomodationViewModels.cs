@@ -7,9 +7,9 @@ using System.Web;
 
 namespace PMS.Areas.Dashboard.ViewModels
 {
-    public class AccommodationsListingModel
+    public class AccommodationsViewModel
     {
-        public IEnumerable<Accommodation> Accommodations { get; set; }
+        public IEnumerable<AccommodationPackage> Accommodation { get; set; }
 
         public int? AccommodationPackageID { get; set; }
         public IEnumerable<AccommodationPackage> AccommodationPackages { get; set; }

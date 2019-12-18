@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMS.Services
+namespace PMS.Entities
 {
     public class PMSSignInManager : SignInManager<PMSUser, string>
     {

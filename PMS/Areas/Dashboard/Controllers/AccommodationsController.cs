@@ -1,5 +1,4 @@
-﻿using PMS.Services;
-using PMS.Entities;
+﻿using PMS.Entities;
 using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PMS.Areas.Dashboard.ViewModels;
+using PMS.Services;
 
 namespace PMS.Areas.Dashboard.Controllers
 {
@@ -20,13 +20,13 @@ namespace PMS.Areas.Dashboard.Controllers
             int recordSize = 5;
             page = page ?? 1;
 
-            AccommodationsListingModel model = new AccommodationsListingModel();
+            AccommodationsViewModels model = new AccommodationsViewModels();
 
             model.SearchTerm = searchTerm;
             model.AccommodationPackageID = accommodationPackageID;
             model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackages();
 
-            model.Accommodations = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
+            var Accommodation = accommodationsService.SearchAccommodations(searchTerm, accommodationPackageID, page.Value, recordSize);
             var totalRecords = accommodationsService.SearchAccommodationsCount(searchTerm, accommodationPackageID);
 
             model.Pager = new Pager(totalRecords, page, recordSize);

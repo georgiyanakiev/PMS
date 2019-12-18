@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMS.Services
+namespace PMS.Entities
 {
     public class PMSRoleManager : RoleManager<IdentityRole>
     {

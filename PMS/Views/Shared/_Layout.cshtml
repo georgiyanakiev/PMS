@@ -110,6 +110,7 @@
                                 <li><a href="dining-bar.html">Dining &amp; Bar</a></li>
                                 <li><a href="aminities.html">Aminities</a></li>
                                 <li><a href="contact.html">Contact</a></li>
+                                
 
                                 @if (!User.Identity.IsAuthenticated)
                                 {
@@ -119,7 +120,7 @@
                                 else
                                 {
                                     <li><a href="@Url.Action("Index","Manager")">Hello! @User.Identity.Name</a></li>
-                                    
+
                                 }
                             </ul>
                         </div>

@@ -2,7 +2,6 @@
 using Microsoft.AspNet.Identity.Owin;
 using PMS.Areas.Dashboard.ViewModels;
 using PMS.Entities;
-using PMS.Services;
 using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
