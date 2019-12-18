@@ -13,7 +13,7 @@ namespace PMS.ViewModels
         public IEnumerable<Accommodation> Accommodations { get; set; }
         public string SearchTerm { get; set; }
         public int? AccommodationPackageID { get; set; }
-        public IEnumerable<AccommodationPackage> AccommodationPackages { get; internal set; }
+        public IEnumerable<AccommodationPackage> AccommodationPackages { get; set; }
         public Pager Pager { get; set; }
         public int SelectedAccommodationPackageID { get; internal set; }
     }
