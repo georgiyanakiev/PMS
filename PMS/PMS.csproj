@@ -2130,7 +2130,7 @@
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\style.css.map" />
     <None Include="packages.config" />
-    <Content Include="Views\Accommodations\Index.cshtml" />
+    <Content Include="Views\Accommodation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -2176,7 +2176,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" />
+      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -39,7 +39,7 @@ namespace PMS.Areas.Dashboard.Controllers
         {
             AccommodationActionModel model = new AccommodationActionModel();
 
-            if (ID.HasValue) //we are trying to edit a record
+            if (ID.HasValue) 
             {
                 var accommodation = accommodationsService.GetAccommodationByID(ID.Value);
 
@@ -61,7 +61,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
             var result = false;
 
-            if (model.ID > 0) //we are trying to edit a record
+            if (model.ID > 0) 
             {
                 var accommodation = accommodationsService.GetAccommodationByID(model.ID);
 
