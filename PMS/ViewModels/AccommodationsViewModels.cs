@@ -15,6 +15,6 @@ namespace PMS.ViewModels
         public int? AccommodationPackageID { get; set; }
         public IEnumerable<AccommodationPackage> AccommodationPackages { get; set; }
         public Pager Pager { get; set; }
-        public int SelectedAccommodationPackageID { get; internal set; }
+        public int SelectedAccommodationPackageID { get; set; }
     }
 }

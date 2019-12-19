@@ -181,7 +181,7 @@
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\AccommodationPackagesViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\AccommodationTypesModels.cs" />
-    <Compile Include="Areas\Dashboard\ViewModels\AccomodationViewModels.cs" />
+    <Compile Include="Areas\Dashboard\ViewModels\AccommodationViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\RolesViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\UsersViewModels.cs" />
     <Compile Include="Code\Variables.cs" />

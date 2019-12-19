@@ -1,4 +1,4 @@
-﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationsListingModel
+﻿@model PMS.ViewModels.AccommodationsViewModels
 
 <aside id="colorlib-hero">
     <div class="flexslider">
@@ -25,15 +25,30 @@
     <div id="colorlib-rooms" class="colorlib-light-grey">
         <div class="container">
             <div class="row">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Select Accommodation Package
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        @foreach (var accommodationPackage in Model.AccommodationPackages)
+                        {
+                            <li class="@( Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty )">
+                                <a href="@Url.Action("Index", "Accommodation", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = accommodationPackage.ID })">
+                                    @accommodationPackage.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
 
-                @if (Model.Accommodation != null && Model.Accommodation.Count() > 0)
+                @if (Model.Accommodations != null && Model.Accommodations.Count() > 0)
                 {
                     foreach (var accommodation in Model.Accommodations)
                     {
                         <div class="col-md-4 room-wrap animate-box">
                             <a href="images/room-1.jpg" class="room image-popup-link" style="background-image: url(images/room-1.jpg);"></a>
                             <div class="desc text-center">
-                                <span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
                                 <h3>
                                     <a href="rooms-suites.html">
                                         @accommodation.Name
@@ -46,8 +61,7 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        <i class="icon-check"></i>
-                                        @accommodation.AccommodationPackage.NoOfRoom
+                                        No. Of Rooms: @accommodation.AccommodationPackage.NoOfRoom
                                     </li>
                                 </ul>
                                 <p><a class="btn btn-primary">Book now!</a></p>
