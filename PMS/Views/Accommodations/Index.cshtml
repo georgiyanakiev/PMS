@@ -1,4 +1,5 @@
 ﻿@model PMS.ViewModels.AccommodationsViewModels
+    ewModels
 
 <aside id="colorlib-hero">
     <div class="flexslider">
@@ -35,7 +36,7 @@
                         {
                             <li class="@( Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty )">
                                 <a href="@Url.Action("Index", "Accommodation", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = accommodationPackage.ID })">
-                                    @accommodationPackage.Name
+                                    @accommodationPackage
                                 </a>
                             </li>
                         }
@@ -51,7 +52,7 @@
                             <div class="desc text-center">
                                 <h3>
                                     <a href="rooms-suites.html">
-                                        @accommodation.Name
+                                        @accommodation
                                     </a>
                                 </h3>
                                 <p class="price">

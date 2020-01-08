@@ -2130,7 +2130,7 @@
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\style.css.map" />
     <None Include="packages.config" />
-    <Content Include="Views\Accommodation\Index.cshtml" />
+    <Content Include="Views\Accommodations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
