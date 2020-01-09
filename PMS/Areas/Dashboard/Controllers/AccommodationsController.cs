@@ -20,7 +20,7 @@ namespace PMS.Areas.Dashboard.Controllers
             int recordSize = 5;
             page = page ?? 1;
 
-            AccommodationsListingModel model = new AccommodationsListingModel();
+            ViewModels.AccommodationViewModels model = new ViewModels.AccommodationViewModels();
 
             model.SearchTerm = searchTerm;
             model.AccommodationPackageID = accommodationPackageID;

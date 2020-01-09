@@ -9,7 +9,6 @@ namespace PMS.ViewModels
     public class AccommodationsViewModels
     {   
         public AccommodationType AccommodationType { get; set; }
-        public IEnumerable<AccommodationPackage> Accommodation { get; set; }
         public IEnumerable<Accommodation> Accommodations { get; set; }
         public string SearchTerm { get; set; }
         public int? AccommodationPackageID { get; set; }
