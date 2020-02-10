@@ -1,42 +1,36 @@
-﻿using PMS.Entities;
+﻿using PMS.ViewModels;
+using PMS.Entities;
 using PMS.Services;
-using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
 namespace PMS.Controllers
 {
-    public class AccommodationsController : Controller
+    public class AccomodationsController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationsService accommodationsService = new AccommodationsService();
+        AccommodationsService accomodationsService = new AccommodationsService();
 
         public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
-            
-                AccommodationsViewModels model = new AccommodationsViewModels();
+            AccommodationsViewModels model = new AccommodationsViewModels();
+            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
+            model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
+            model.SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
+            model.Accommodations = accomodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
 
-                model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
-
-                model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
-
-                var SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
-                model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(SelectedAccommodationPackageID);
-
-                return View(model);
-            
+            return View(model);
         }
 
         //public ActionResult Details(int accommodationPackageID)
         //{
         //    AccommodationPackageDetailsViewModel model = new AccommodationPackageDetailsViewModel();
 
-        //    model.AccomodationPackage = accommodationPackagesService.GetAccommodationPackageByID(accommodationPackageID);
+        //    model.AccommodationPackage = accommodationPackagesService.GetAccommodationPackageByID(accommodationPackageID);
 
         //    return View(model);
         //}
