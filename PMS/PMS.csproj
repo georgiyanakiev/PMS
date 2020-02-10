@@ -2131,7 +2131,6 @@
     <Content Include="Content\style.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\Accommodations\Index.cshtml" />
-    <Content Include="Views\Accomodations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
