@@ -13,7 +13,7 @@ namespace PMS.Areas.Dashboard.Controllers
     public class AccommodationsController : Controller
     {
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationService accommodationsService = new AccommodationService();
+        AccommodationsService accommodationsService = new AccommodationsService();
 
         public ActionResult Index(string searchTerm, int? accommodationPackageID, int? page)
         {

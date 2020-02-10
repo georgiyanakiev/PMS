@@ -10,24 +10,26 @@ using System.Web.Mvc;
 
 namespace PMS.Controllers
 {
-    public class AccommodationController : Controller
+    public class AccommodationsController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationService accommodationsService = new AccommodationService();
+        AccommodationsService accommodationsService = new AccommodationsService();
 
         public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
-            AccommodationsViewModels model = new AccommodationsViewModels();
+            
+                AccommodationsViewModels model = new AccommodationsViewModels();
 
-            model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
+                model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
 
-            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
+                model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
 
-            var SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
-            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(SelectedAccommodationPackageID);
+                var SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
+                model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(SelectedAccommodationPackageID);
 
-            return View(model);
+                return View(model);
+            
         }
 
         //public ActionResult Details(int accommodationPackageID)

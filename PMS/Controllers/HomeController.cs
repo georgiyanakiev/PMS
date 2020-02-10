@@ -18,7 +18,7 @@ namespace PMS.Controllers
             AccommodationTypesService service = new AccommodationTypesService();
             AccommodationPackagesService accomodationPackagesService = new AccommodationPackagesService();
 
-            model.AccommodationType = service.GetAllAccommodationTypes();
+            model.AccommodationTypes = service.GetAllAccommodationTypes();
             model.AccommodationPackages = accomodationPackagesService.GetAllAccommodationPackages();
 
             

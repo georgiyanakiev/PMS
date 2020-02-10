@@ -8,7 +8,7 @@ namespace PMS.ViewModels
 {
     public class HomeViewModel
     {
-        public IEnumerable<AccommodationType> AccommodationType { get; set; }
+        public IEnumerable<AccommodationType> AccommodationTypes { get; set; }
         public IEnumerable<AccommodationPackage> AccommodationPackages { get; internal set; }
     }
 }

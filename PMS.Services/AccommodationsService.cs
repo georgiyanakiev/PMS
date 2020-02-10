@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PMS.Services
 {
-    public class AccommodationService
+    public class AccommodationsService
     {
         public IEnumerable<Accommodation> GetAllAccommodations()
         {
