@@ -15,13 +15,19 @@ namespace PMS.Services
         {
             var context = new PMSContext();
 
-            return context.accommodationPackages.ToList();
+            return context.AccommodationPackages.ToList();
+        }
+        public IEnumerable<AccommodationPackage> GetAllAccommodationPackagesByAccommodationType(int accommodationTypeID)
+        {
+            var context = new PMSContext();
+
+            return context.AccommodationPackages.Where(x=>x.AccommodationTypeID == accommodationTypeID).ToList();
         }
         public IEnumerable<AccommodationPackage> SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID, int page, int recordSize)
         {
             var context = new PMSContext();
 
-            var accommodationPackages = context.accommodationPackages.AsQueryable();
+            var accommodationPackages = context.AccommodationPackages.AsQueryable();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
@@ -40,17 +46,11 @@ namespace PMS.Services
 
             return accommodationPackages.OrderBy(x => x.AccommodationTypeID).Skip(skip).Take(recordSize).ToList();
         }
-
-        public IEnumerable<AccommodationPackage> GetAllAccommodationPackagesByAccommodationType(int iD)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID)
+         public int SearchAccommodationPackagesCount(string searchTerm, int? accommodationTypeID)
         {
             var context = new PMSContext();
 
-            var accommodationPackages = context.accommodationPackages.AsQueryable();
+            var accommodationPackages = context.AccommodationPackages.AsQueryable();
 
             if  (!string.IsNullOrEmpty(searchTerm))
             {
@@ -63,13 +63,13 @@ namespace PMS.Services
 
            
 
-            return context.accommodationPackages.Count();
+            return context.AccommodationPackages.Count();
         }
         public AccommodationPackage GetAccommodationPackageByID(int ID)
         {   
             using (var context = new PMSContext())
             {
-                return context.accommodationPackages.Find(ID);
+                return context.AccommodationPackages.Find(ID);
             }
 
             
@@ -78,7 +78,7 @@ namespace PMS.Services
         {
             var context = new PMSContext();
 
-            context.accommodationPackages.Add(accommodationPackage);
+            context.AccommodationPackages.Add(accommodationPackage);
 
             return context.SaveChanges() > 0;
         }
