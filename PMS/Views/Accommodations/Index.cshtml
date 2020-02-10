@@ -35,8 +35,8 @@
                         @foreach (var accommodationPackage in Model.AccommodationPackages)
                         {
                             <li class="@( Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty )">
-                                <a href="@Url.Action("Index", "Accommodation", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = accommodationPackage.ID })">
-                                    @accommodationPackage
+                                <a href="@Url.Action("Index", "Accommodations", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = Model.SelectedAccommodationPackageID })">
+                                    @accommodationPackage.Name
                                 </a>
                             </li>
                         }
@@ -52,7 +52,7 @@
                             <div class="desc text-center">
                                 <h3>
                                     <a href="rooms-suites.html">
-                                        @accommodation
+                                        @accommodation.Name
                                     </a>
                                 </h3>
                                 <p class="price">
@@ -62,7 +62,8 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        No. Of Rooms: @accommodation.AccommodationPackage.NoOfRoom
+                                        <i class="icon-check"></i>
+                                        @accommodation.AccommodationPackage.NoOfRoom
                                     </li>
                                 </ul>
                                 <p><a class="btn btn-primary">Book now!</a></p>
