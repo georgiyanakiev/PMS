@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace PMS.Areas.Dashboard.Controllers
 {
-    public class AccommodationsController : Controller
+    public class AccommodationController : Controller
     {
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
         AccommodationsService accommodationsService = new AccommodationsService();

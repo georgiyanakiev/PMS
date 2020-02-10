@@ -1,6 +1,5 @@
-﻿using PMS.ViewModels;
-using PMS.Entities;
-using PMS.Services;
+﻿using PMS.Services;
+using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +17,14 @@ namespace PMS.Controllers
         public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
             AccommodationsViewModels model = new AccommodationsViewModels();
+
             model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
+
             model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
-            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
-            
+
             model.SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
+
+            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
 
             return View(model);
         }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMS.Entities
+namespace PMS.Services
 {
     public class AccommodationTypesService
     {
@@ -17,15 +17,15 @@ namespace PMS.Entities
             return context.AccommodationTypes.ToList();
         }
 
-        public IEnumerable<AccommodationType> SearchAccommodationTypes(string SearchTerm)
+        public IEnumerable<AccommodationType> SearchAccommodationTypes(string searchTerm)
         {
             var context = new PMSContext();
 
             var accommodationTypes = context.AccommodationTypes.AsQueryable();
 
-            if (!string.IsNullOrEmpty(SearchTerm))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                accommodationTypes = accommodationTypes.Where(a => a.Name.ToLower().Contains(SearchTerm.ToLower()));
+                accommodationTypes = accommodationTypes.Where(a => a.Name.ToLower().Contains(searchTerm.ToLower()));
             }
 
             return accommodationTypes.ToList();
@@ -37,6 +37,7 @@ namespace PMS.Entities
 
             return context.AccommodationTypes.Find(ID);
         }
+
         public bool SaveAccommodationType(AccommodationType accommodationType)
         {
             var context = new PMSContext();
@@ -45,6 +46,7 @@ namespace PMS.Entities
 
             return context.SaveChanges() > 0;
         }
+
         public bool UpdateAccommodationType(AccommodationType accommodationType)
         {
             var context = new PMSContext();
@@ -53,6 +55,7 @@ namespace PMS.Entities
 
             return context.SaveChanges() > 0;
         }
+
         public bool DeleteAccommodationType(AccommodationType accommodationType)
         {
             var context = new PMSContext();
