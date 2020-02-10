@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace PMS.Services
 {
-    public class AccommodationService
+    public class AccommodationsService
     {
         public IEnumerable<Accommodation> GetAllAccommodations()
         {
             var context = new PMSContext();
 
             return context.Accommodations.ToList();
+        }
+        public IEnumerable<Accommodation> GetAllAccommodationsByAccommodationPackage(int accommodationPackageID)
+        {
+            var context = new PMSContext();
+
+            return context.Accommodations.Where(x =>x.AccommodationPackageID == accommodationPackageID).ToList();
         }
 
         public IEnumerable<Accommodation> SearchAccommodations(string searchTerm, int? accommodationPackageID, int page, int recordSize)

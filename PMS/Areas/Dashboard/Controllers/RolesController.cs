@@ -1,6 +1,5 @@
 ﻿using PMS.Areas.Dashboard.ViewModels;
 using PMS.Entities;
-using PMS.Services;
 using PMS.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

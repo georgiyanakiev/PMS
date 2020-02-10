@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PMS.Entities;
 using PMS.Models;
-using PMS.Services;
+
 
 namespace PMS.Controllers
 {

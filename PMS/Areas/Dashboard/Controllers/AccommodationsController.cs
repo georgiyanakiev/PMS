@@ -1,26 +1,26 @@
-﻿using PMS.Services;
+﻿using PMS.Areas.Dashboard.ViewModels;
 using PMS.Entities;
+using PMS.Services;
 using PMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PMS.Areas.Dashboard.ViewModels;
 
 namespace PMS.Areas.Dashboard.Controllers
 {
     public class AccommodationsController : Controller
     {
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationService accommodationsService = new AccommodationService();
+        AccommodationsService accommodationsService = new AccommodationsService();
 
         public ActionResult Index(string searchTerm, int? accommodationPackageID, int? page)
         {
             int recordSize = 5;
             page = page ?? 1;
 
-            AccommodationsListingModel model = new AccommodationsListingModel();
+            ViewModels.AccommodationViewModels model = new ViewModels.AccommodationViewModels();
 
             model.SearchTerm = searchTerm;
             model.AccommodationPackageID = accommodationPackageID;
@@ -39,7 +39,7 @@ namespace PMS.Areas.Dashboard.Controllers
         {
             AccommodationActionModel model = new AccommodationActionModel();
 
-            if (ID.HasValue) //we are trying to edit a record
+            if (ID.HasValue) 
             {
                 var accommodation = accommodationsService.GetAccommodationByID(ID.Value);
 
@@ -61,7 +61,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
             var result = false;
 
-            if (model.ID > 0) //we are trying to edit a record
+            if (model.ID > 0) 
             {
                 var accommodation = accommodationsService.GetAccommodationByID(model.ID);
 
@@ -71,7 +71,7 @@ namespace PMS.Areas.Dashboard.Controllers
 
                 result = accommodationsService.UpdateAccommodation(accommodation);
             }
-            else //we are trying to create a record
+            else 
             {
                 Accommodation accommodation = new Accommodation();
 
