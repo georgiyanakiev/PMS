@@ -16,10 +16,10 @@ namespace PMS.Controllers
             HomeViewModel model = new HomeViewModel();
 
             AccommodationTypesService service = new AccommodationTypesService();
-            AccommodationPackagesService accomodationPackagesService = new AccommodationPackagesService();
+            AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
 
             model.AccommodationTypes = service.GetAllAccommodationTypes();
-            model.AccommodationPackages = accomodationPackagesService.GetAllAccommodationPackages();
+            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackages();
 
             
             return View(model);
