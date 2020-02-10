@@ -16,6 +16,7 @@ namespace PMS.Services
 
             return context.Accommodations.ToList();
         }
+
         public IEnumerable<Accommodation> GetAllAccommodationsByAccommodationPackage(int accommodationPackageID)
         {
             var context = new PMSContext();

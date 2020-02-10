@@ -9,19 +9,20 @@ using System.Web.Mvc;
 
 namespace PMS.Controllers
 {
-    public class AccomodationsController : Controller
+    public class AccommodationsController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
-        AccommodationsService accomodationsService = new AccommodationsService();
+        AccommodationsService accommodationsService = new AccommodationsService();
 
         public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
             AccommodationsViewModels model = new AccommodationsViewModels();
-            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
             model.AccommodationType = accommodationTypesService.GetAccommodationTypeByID(accommodationTypeID);
+            model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
+            model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
+            
             model.SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
-            model.Accommodations = accomodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
 
             return View(model);
         }
