@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace PMS.Controllers
 {
-    public class AccommodationsController : Controller
+    public class AccommodationController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
