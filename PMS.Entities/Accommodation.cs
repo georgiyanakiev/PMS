@@ -13,6 +13,10 @@ namespace PMS.Entities
         public virtual AccommodationPackage AccommodationPackage { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        
+
+        public List<AccommodationPicture> AccommodationPicture { get; set; }
+
+
+
     }
 }

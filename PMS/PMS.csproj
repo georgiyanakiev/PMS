@@ -2032,6 +2032,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="images\site\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\bootstrap\.DS_Store" />

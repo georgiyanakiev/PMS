@@ -25,5 +25,6 @@ namespace PMS.Data
         public DbSet<AccommodationPackage> AccommodationPackages { get; set; }
         public DbSet<Accommodation> Accommodations { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
     }
 }
