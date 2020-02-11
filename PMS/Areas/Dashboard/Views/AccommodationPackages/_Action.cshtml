@@ -52,15 +52,16 @@
                     <input id="selectPictures" class="form-control" name="Pictures" type="file" multiple>
                     <input type="hidden" name="pictureIDs" id="pictureIDs" value="" />
                 </div>
-                @*<div id="picturesArea">
+                <div id="picturesArea">
+                    
                     @if (Model.AccommodationPackagePictures != null && Model.AccommodationPackagePictures.Count > 0)
                     {
                         foreach (var accommodationPicture in Model.AccommodationPackagePictures)
                         {
-                            <img src="/images/site/@accommodationPicture.Picture.URL" class="img-fluid" style="width:200px" onclick="removeMe(this)" data-id="@accommodationPicture.PictureID" />
+                            <img src="~/images/site/@accommodationPicture.Picture.URL" class="img-fluid" style="width:200px" onclick="removeMe(this)" data-id="@accommodationPicture.PictureID" />
                         }
                     }
-                </div>*@
+                </div>
             </form>
 
             <div class="errorDiv">

@@ -15,6 +15,7 @@ namespace PMS.Areas.Dashboard.Controllers
        AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
        AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
 
+        DashboardService dashboardService = new DashboardService();
         public ActionResult Index(string searchTerm,int? accommodationTypeID, int? page)
         {
 
@@ -54,6 +55,7 @@ namespace PMS.Areas.Dashboard.Controllers
                 model.Name = accommodationPackage.Name;
                 model.NoOfRoom = accommodationPackage.NoOfRoom;
                 model.FeePerNight = accommodationPackage.FeePerNight;
+                model.AccommodationPackagePictures = accommodationPackagesService.GetPicturesByAccommodationPackageID(accommodationPackage.ID);
             }
 
             model.AccommodationTypes = accommodationTypesService.GetAllAccommodationTypes();
@@ -87,7 +89,13 @@ namespace PMS.Areas.Dashboard.Controllers
                 accommodationPackage.NoOfRoom = model.NoOfRoom;
                 accommodationPackage.FeePerNight = model.FeePerNight;
 
+                //model.PictureIDs = "90,67,23" = ["90", "67", "23"] = {90, 67, 23}
+                List<int> pictureIDs = model.PictureIDs.Split(',').Select(x => int.Parse(x)).ToList();
 
+                var pictures = dashboardService.GetPicturesByIDs(pictureIDs);
+
+                accommodationPackage.AccommodationPackagePicture = new List<AccommodationPackagePicture>();
+                accommodationPackage.AccommodationPackagePicture.AddRange(pictures.Select(x=> new AccommodationPackagePicture() { PictureID = x.ID } ));
 
                 result = accommodationPackagesService.SaveAccommodationPackage(accommodationPackage);
             }

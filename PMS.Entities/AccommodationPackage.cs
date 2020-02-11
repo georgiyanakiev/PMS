@@ -17,6 +17,6 @@ namespace PMS.Entities
         public string Name { get; set; }
         public int NoOfRoom { get; set; }
         public decimal FeePerNight { get; set; }
-        public List<AccommodationPackagePicture> AccommodationPackagePicture { get; set; }
+        public virtual List<AccommodationPackagePicture> AccommodationPackagePicture { get; set; }
     }
 }

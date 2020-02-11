@@ -18,5 +18,12 @@ namespace PMS.Services
 
             return context.SaveChanges() > 0;
         }
+
+        public IEnumerable<Picture> GetPicturesByIDs(List<int> pictureIDs)
+        {
+            var context = new PMSContext();
+
+            return pictureIDs.Select(x => context.Pictures.Find(x)).ToList();
+        }
     }
 }

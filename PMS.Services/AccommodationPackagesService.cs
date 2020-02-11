@@ -98,5 +98,12 @@ namespace PMS.Services
 
             return context.SaveChanges() > 0;
         }
+
+        public List<AccommodationPackagePicture> GetPicturesByAccommodationPackageID(int accommodationPackageID)
+        {
+            var context = new PMSContext();
+
+            return context.AccommodationPackages.Find(accommodationPackageID).AccommodationPackagePicture.ToList();
+        }
     }
 }
