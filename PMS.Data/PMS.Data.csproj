@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202002110033566_acctypes.designer.cs">
       <DependentUpon>202002110033566_acctypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002111554032_addedPictureEntity.cs" />
+    <Compile Include="Migrations\202002111554032_addedPictureEntity.designer.cs">
+      <DependentUpon>202002111554032_addedPictureEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PMSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002110033566_acctypes.resx">
       <DependentUpon>202002110033566_acctypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111554032_addedPictureEntity.resx">
+      <DependentUpon>202002111554032_addedPictureEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
