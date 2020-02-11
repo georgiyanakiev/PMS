@@ -16,7 +16,7 @@ namespace PMS.Areas.Dashboard.Controllers
        AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
 
         DashboardService dashboardService = new DashboardService();
-        public ActionResult Index(string searchTerm,int? accommodationTypeID, int? page)
+        public ActionResult Index(string searchTerm,int accommodationTypeID, int? page)
         {
 
             int recordSize = 5;
