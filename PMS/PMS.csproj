@@ -185,7 +185,7 @@
     <Compile Include="Areas\Dashboard\ViewModels\RolesViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\UsersViewModels.cs" />
     <Compile Include="Code\Variables.cs" />
-    <Compile Include="Controllers\AccommodationsController.cs" />
+    <Compile Include="Controllers\AccommodationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -2130,7 +2130,7 @@
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\style.css.map" />
     <None Include="packages.config" />
-    <Content Include="Views\Accommodations\Index.cshtml" />
+    <Content Include="Views\Accommodation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

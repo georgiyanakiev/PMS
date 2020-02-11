@@ -31,7 +31,7 @@ namespace PMS.Services
             return accommodationTypes.ToList();
         }
 
-        public AccommodationType GetAccommodationTypeByID(int ID)
+        public AccommodationType GetAccommodationTypeByID(int? ID)
         {
             var context = new PMSContext();
 

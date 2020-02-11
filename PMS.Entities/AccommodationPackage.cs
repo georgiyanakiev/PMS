@@ -11,7 +11,7 @@ namespace PMS.Entities
     {
         public int ID { get; set; }
 
-        public int AccommodationTypeID { get; set; }
+        public int? AccommodationTypeID { get; set; }
         public virtual AccommodationType AccommodationType { get; set; }
 
         public string Name { get; set; }

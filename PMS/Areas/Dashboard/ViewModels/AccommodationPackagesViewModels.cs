@@ -20,7 +20,7 @@ namespace PMS.Areas.Dashboard.ViewModels
     public class AccommodationPackageActionModels
     {
         public int ID { get; set; }
-        public int AccommodationTypeID{ get; set; }
+        public int? AccommodationTypeID{ get; set; }
         public AccommodationType AccommodationType { get; set; }
 
         public string Name { get; set; }
