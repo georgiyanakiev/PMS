@@ -26,7 +26,9 @@ namespace PMS.Areas.Dashboard.ViewModels
         public string Name { get; set; }
         public int NoOfRoom { get; set; }
         public decimal FeePerNight { get; set; }
+        public string PictureIDs { get; set; }
 
         public IEnumerable<AccommodationType> AccommodationTypes { get; set; }
+        public List<AccommodationPackagePicture> AccommodationPackagePictures { get; set; }
     }
 }

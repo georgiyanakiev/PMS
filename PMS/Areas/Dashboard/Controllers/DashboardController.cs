@@ -31,7 +31,7 @@ namespace PMS.Areas.Dashboard.Controllers
                 var picture = files[i];
 
                 var fileName = Guid.NewGuid() + Path.GetExtension(picture.FileName);
-                var filePath = Server.MapPath("~/images/site/") + fileName;
+                var filePath = Server.MapPath("/images/site/") + fileName;
 
                 picture.SaveAs(filePath);
 
