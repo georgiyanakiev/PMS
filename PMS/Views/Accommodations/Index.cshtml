@@ -1,6 +1,5 @@
 ﻿@model PMS.ViewModels.AccommodationsViewModels
 
-
 <aside id="colorlib-hero">
     <div class="flexslider">
         <ul class="slides">
@@ -35,7 +34,7 @@
                         @foreach (var accommodationPackage in Model.AccommodationPackages)
                         {
                             <li class="@( Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty )">
-                                <a href="@Url.Action("Index", "Accommodations", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = Model.SelectedAccommodationPackageID })">
+                                <a href="@Url.Action("Index", "Accommodations", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = accommodationPackage.ID })">
                                     @accommodationPackage.Name
                                 </a>
                             </li>
@@ -62,8 +61,7 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        <i class="icon-check"></i>
-                                        @accommodation.AccommodationPackage.NoOfRoom
+                                        No. Of Rooms: @accommodation.AccommodationPackage.NoOfRoom
                                     </li>
                                 </ul>
                                 <p><a class="btn btn-primary">Book now!</a></p>
@@ -81,11 +79,4 @@
         </div>
     </div>
 }
-
-
-
-
-
-
-
 
