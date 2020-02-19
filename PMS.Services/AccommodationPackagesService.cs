@@ -66,13 +66,10 @@ namespace PMS.Services
             return context.AccommodationPackages.Count();
         }
         public AccommodationPackage GetAccommodationPackageByID(int ID)
-        {   
-            using (var context = new PMSContext())
-            {
-                return context.AccommodationPackages.Find(ID);
-            }
+        {
+            var context = new PMSContext();
 
-            
+            return context.AccommodationPackages.Find(ID);
         }
         public bool SaveAccommodationPackage(AccommodationPackage accommodationPackage)
         {
@@ -86,7 +83,13 @@ namespace PMS.Services
         {
             var context = new PMSContext();
 
-            context.Entry(accommodationPackage).State = System.Data.Entity.EntityState.Modified;
+            var existingAccommodationPackage = context.AccommodationPackages.Find(accommodationPackage.ID);
+
+            context.AccommodationPackagePictures.RemoveRange(existingAccommodationPackage.AccommodationPackagePicture);
+
+            context.Entry(existingAccommodationPackage).CurrentValues.SetValues(accommodationPackage);
+
+            context.AccommodationPackagePictures.AddRange(accommodationPackage.AccommodationPackagePicture);
 
             return context.SaveChanges() > 0;
         }
