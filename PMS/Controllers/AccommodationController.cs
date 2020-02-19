@@ -14,7 +14,7 @@ namespace PMS.Controllers
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
         AccommodationsService accommodationsService = new AccommodationsService();
 
-        public ActionResult Index(int? accommodationTypeID, int? accommodationPackageID)
+        public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
             AccommodationsViewModels model = new AccommodationsViewModels();
 
