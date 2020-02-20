@@ -30,16 +30,16 @@
                         Select Accommodation Package
                         <span class="caret"></span>
                     </button>
-                    @*<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         @foreach (var accommodationPackage in Model.AccommodationPackages)
                         {
-                            <li class="@(Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty)">
+                            <li class="@( Model.SelectedAccommodationPackageID == accommodationPackage.ID ? "active" : string.Empty )">
                                 <a href="@Url.Action("Index", "Accommodations", new { area = "" , accommodationTypeID = Model.AccommodationType.ID , accommodationPackageID = accommodationPackage.ID })">
                                     @accommodationPackage.Name
                                 </a>
                             </li>
                         }
-                    </ul>*@
+                    </ul>
                 </div>
 
                 @if (Model.Accommodations != null && Model.Accommodations.Count() > 0)

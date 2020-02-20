@@ -1,212 +1,233 @@
 ﻿@model PMS.ViewModels.HomeViewModel
 
 <aside id="colorlib-hero">
-        <div class="flexslider">
-            <ul class="slides">
-                <li style="background-image: url(/images/img_bg_5.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-                                <div class="slider-text-inner text-center">
-                                    <h2>Welcome to the luxehotel</h2>
-                                    <h1>A Luxury Hotel</h1>
-                                    <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
-                                </div>
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(/images/img_bg_5.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h2>Welcome to the luxehotel</h2>
+                                <h1>A Luxury Hotel</h1>
+                                <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li style="background-image: url(/images/img_bg_1.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-                                <div class="slider-text-inner text-center">
-                                    <h2>Discover &amp; Enjoy</h2>
-                                    <h1>Everything you need in luxehotel</h1>
-                                    <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
-                                </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_1.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h2>Discover &amp; Enjoy</h2>
+                                <h1>Everything you need in luxehotel</h1>
+                                <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li style="background-image: url(/images/img_bg_3.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluids">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-                                <div class="slider-text-inner text-center">
-                                    <h2>You are invited</h2>
-                                    <h1>We know how to please you</h1>
-                                    <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
-                                </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_3.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluids">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h2>You are invited</h2>
+                                <h1>We know how to please you</h1>
+                                <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li style="background-image: url(/images/img_bg_4.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-                                <div class="slider-text-inner text-center">
-                                    <h2>Come &amp; enjoy the unforgetable nights</h2>
-                                    <h1>In the heart of luxehotel</h1>
-                                    <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
-                                </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_4.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h2>Come &amp; enjoy the unforgetable nights</h2>
+                                <h1>In the heart of luxehotel</h1>
+                                <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
                             </div>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+<div id="colorlib-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 search-wrap">
+                <form method="post" class="colorlib-form">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">Check-in:</label>
+                                <div class="form-field">
+                                    <i class="icon icon-calendar2"></i>
+                                    <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">Check-out:</label>
+                                <div class="form-field">
+                                    <i class="icon icon-calendar2"></i>
+                                    <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="adults">Adults</label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="people" id="people" class="form-control">
+                                        <option value="#">1</option>
+                                        <option value="#">2</option>
+                                        <option value="#">3</option>
+                                        <option value="#">4</option>
+                                        <option value="#">5+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="children">Children</label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="people" id="people" class="form-control">
+                                        <option value="#">1</option>
+                                        <option value="#">2</option>
+                                        <option value="#">3</option>
+                                        <option value="#">4</option>
+                                        <option value="#">5+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" name="submit" id="submit" value="Search" class="btn btn-primary btn-block">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </aside>
-    <div id="colorlib-reservation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 search-wrap">
-                    <form method="post" class="colorlib-form">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="date">Check-in:</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-calendar2"></i>
-                                        <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="date">Check-out:</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-calendar2"></i>
-                                        <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="adults">Adults</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-arrow-down3"></i>
-                                        <select name="people" id="people" class="form-control">
-                                            <option value="#">1</option>
-                                            <option value="#">2</option>
-                                            <option value="#">3</option>
-                                            <option value="#">4</option>
-                                            <option value="#">5+</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="children">Children</label>
-                                    <div class="form-field">
-                                        <i class="icon icon-arrow-down3"></i>
-                                        <select name="people" id="people" class="form-control">
-                                            <option value="#">1</option>
-                                            <option value="#">2</option>
-                                            <option value="#">3</option>
-                                            <option value="#">4</option>
-                                            <option value="#">5+</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="submit" name="submit" id="submit" value="Search" class="btn btn-primary btn-block">
-                            </div>
-                        </div>
-                    </form>
+    </div>
+</div>
+
+<div id="colorlib-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 animate-box text-center">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-reception"></i>
+                    </span>
+                    <h3>24/7 Front Desk</h3>
+                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate-box text-center">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-herbs"></i>
+                    </span>
+                    <h3>Spa Suites</h3>
+                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate-box text-center">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-car"></i>
+                    </span>
+                    <h3>Transfer Services</h3>
+                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                </div>
+            </div>
+            <div class="col-md-3 animate-box text-center">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-cheers"></i>
+                    </span>
+                    <h3>Restaurant &amp; Bar</h3>
+                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="colorlib-services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 animate-box text-center">
-                    <div class="services">
-                        <span class="icon">
-                            <i class="flaticon-reception"></i>
-                        </span>
-                        <h3>24/7 Front Desk</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-                <div class="col-md-3 animate-box text-center">
-                    <div class="services">
-                        <span class="icon">
-                            <i class="flaticon-herbs"></i>
-                        </span>
-                        <h3>Spa Suites</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-                <div class="col-md-3 animate-box text-center">
-                    <div class="services">
-                        <span class="icon">
-                            <i class="flaticon-car"></i>
-                        </span>
-                        <h3>Transfer Services</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-                <div class="col-md-3 animate-box text-center">
-                    <div class="services">
-                        <span class="icon">
-                            <i class="flaticon-cheers"></i>
-                        </span>
-                        <h3>Restaurant &amp; Bar</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@if (Model.AccommodationTypes != null && Model.AccommodationTypes.Count() > 0)
+{
+    var i = 0;
 
-        @if (Model.AccommodationTypes != null && Model.AccommodationTypes.Count() > 0)
-        {
+
     <div id="colorlib-rooms" class="colorlib-light-grey">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-                    <h2>Accommodation Types</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 animate-box">
-                    <div class="owl-carousel owl-carousel2">
-
+                    <h2>Accommodation</h2>
+                    <p>Select Accommodation Type</p>
+                    <p>
                         @foreach (var accommodationType in Model.AccommodationTypes)
                         {
-                            <div class="item">
-                                <a href="/images/room-1.jpg" class="room image-popup-link" style="background-image: url(/images/room-1.jpg);"></a>
-                                <div class="desc text-center">
-                                    <span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-                                    <h3><a href="@Url.Action("Index","Accommodations", new { area = "Dashboard" , accommodationTypeID = accommodationType.ID})">
-                                        @accommodationType.Name
-                                        </a>
-                                    </h3>
-                                    <p class="price">
-                                        @accommodationType.Description
-                                    </p>
-                                   <p><a class="btn btn-primary btn-book">Book now!</a></p>
-                                </div>
-                            </div>
+                            <button class="btn btn-sm changeAccommodationType" data-id="@accommodationType.ID">
+                                @accommodationType.Name
+                            </button>
+
+                           
                         }
-                    </div>
-                </div>
-                <div class="col-md-12 text-center animate-box">
-                    <a href="#">View all rooms <i class="icon-arrow-right3"></i></a>
+                    </p>
                 </div>
             </div>
+            @foreach (var accommodationType in Model.AccommodationTypes)
+            {
+                <div data-id="@accommodationType.ID" class="row accommodationTypesRow"  style="@(i !=0 ? "display:block" : string.Empty)">
+                    <div class="col-md-12 animate-box">
+                        <div class="owl-carousel owl-carousel2">
+
+                            @foreach (var accommodationPackage in Model.AccommodationPackages.Where(x =>x.AccommodationTypeID == accommodationType.ID))
+                            {
+                                <div class="item">
+                                    <a href="/images/room-1.jpg" class="room image-popup-link" style="background-image: url(/images/room-1.jpg);"></a>
+                                    <div class="desc text-center">
+                                        <span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
+                                        <h3>
+                                            <a href="@Url.Action("Index","Accommodations", new { area = "Dashboard" , accommodationTypeID = accommodationType.ID})">
+                                                @accommodationPackage.Name
+                                            </a>
+                                        </h3>
+                                        <p class="price">
+                                            @accommodationPackage.FeePerNight
+                                        </p>
+                                        <p><a class="btn btn-primary btn-book">Book now!</a></p>
+                                    </div>
+                                </div>
+
+                                
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center animate-box">
+                        <a href="#">View all rooms <i class="icon-arrow-right3"></i></a>
+                    </div>
+                </div>
+                i++;
+            }
+
         </div>
     </div>
 }
@@ -460,3 +481,4 @@
         </div>
     </div>
 </div>
+
