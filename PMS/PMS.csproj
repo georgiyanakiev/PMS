@@ -1996,6 +1996,7 @@
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2177,7 +2178,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" />
+      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
