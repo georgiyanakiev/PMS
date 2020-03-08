@@ -97,7 +97,11 @@ namespace PMS.Services
         {
             var context = new PMSContext();
 
-            context.Entry(accommodationPackage).State = System.Data.Entity.EntityState.Deleted;
+
+            var existingAccommodationPackage = context.AccommodationPackages.Find(accommodationPackage.ID);
+
+            context.AccommodationPackagePictures.RemoveRange(existingAccommodationPackage.AccommodationPackagePicture);
+            context.Entry(existingAccommodationPackage).State = System.Data.Entity.EntityState.Deleted;
 
             return context.SaveChanges() > 0;
         }
