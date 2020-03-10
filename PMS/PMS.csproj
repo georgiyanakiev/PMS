@@ -176,8 +176,11 @@
     <Compile Include="Areas\Dashboard\Controllers\AccommodationsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\AccommodationTypesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HousekeepingController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\NightauditController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\ReservationsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\RoomsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\UsersController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\AccommodationPackagesViewModels.cs" />
@@ -2133,8 +2136,12 @@
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\style.css.map" />
     <Content Include="Areas\Dashboard\Views\Reservations\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Rooms\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Nightaudit\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Housekeeping\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Accommodation\Index.cshtml" />
+    <Content Include="Views\Accommodation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
