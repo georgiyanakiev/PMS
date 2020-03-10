@@ -1,7 +1,7 @@
 ﻿@model PMS.ViewModels.AccommodationPackageDetailsViewModel
 
 @{
-    var thumbnailPicture = Model.AccommodationPackage.AccommodationPackagePictures != null ? Model.AccommodationPackage.AccommodationPackagePictures.FirstOrDefault() : null;
+    var thumbnailPicture = Model.AccommodationPackage.AccommodationPackagePicture != null ? Model.AccommodationPackage.AccommodationPackagePicture.FirstOrDefault() : null;
     var thumbnailURL = thumbnailPicture != null ? thumbnailPicture.Picture.URL : "default-image.jpg";
 }
 
@@ -44,9 +44,9 @@
                 </div>
                 <div class="amenities-img animate-box" style="height:400px; background-image: url(/images/site/@thumbnailURL);"></div>
 
-                @if (Model.AccommodationPackage.AccommodationPackagePictures != null && Model.AccommodationPackage.AccommodationPackagePictures.Count > 0)
+                @if (Model.AccommodationPackage.AccommodationPackagePicture != null && Model.AccommodationPackage.AccommodationPackagePicture.Count > 0)
                 {
-                    foreach (var picture in Model.AccommodationPackage.AccommodationPackagePictures.Where(x => x != thumbnailPicture))
+                    foreach (var picture in Model.AccommodationPackage.AccommodationPackagePicture.Where(x => x != thumbnailPicture))
                     {
                         <div class="amenities-img animate-box" style="height:400px; background-image: url(/images/site/@picture.Picture.URL);"></div>
                     }
