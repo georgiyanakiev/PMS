@@ -182,7 +182,7 @@
     <div id="colorlib-rooms" class="colorlib-light-grey">
         @foreach (var accommodationType in Model.AccommodationTypes)
         {
-            <div class="container accommodationTypesRow" data-id="@accommodationType.ID" style="@(i != 0 ? "display:block" : string.Empty)">
+            <div class="container accommodationTypesRow" data-id="@accommodationType.ID" style="@(i != 0 ? "display:none" : string.Empty)">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                         <span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
@@ -209,17 +209,17 @@
                                 var thumbnailURL = thumbnailPicture != null ? thumbnailPicture.Picture.URL : "default-image.jpg";
 
                                 <div class="item">
-                                    <a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })" class="room" style="background-image: url(/images/site/@thumbnailURL);"></a>
+                                    <a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })" class="room" style="background-image: url(/images/site/@thumbnailURL);"></a>
                                     <div class="desc text-center">
                                         <h3>
-                                            <a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })">
+                                            <a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })">
                                                 @accommodationPackage.Name
                                             </a>
                                         </h3>
                                         <p class="price">
                                             @accommodationPackage.FeePerNight
                                         </p>
-                                        <p><a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })" class="btn btn-primary btn-book">Book now!</a></p>
+                                        <p><a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })" class="btn btn-primary btn-book">Book now!</a></p>
                                     </div>
                                 </div>
                             }
