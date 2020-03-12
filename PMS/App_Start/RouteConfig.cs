@@ -22,14 +22,14 @@ namespace PMS
 
             routes.MapRoute(
                 name: "AccommodationPackageDetails",
-                url: "accommodation-package/{accommodationPackageID}",
+                url: "Accommodation-package/{accommodationPackageID}",
                 defaults: new { area = "", controller = "Accommodations", action = "Details" },
                 namespaces: new[] { "PMS.Controllers" }
             );
 
             routes.MapRoute(
                 name: "CheckAvailability",
-                url: "accommodation-check-availability",
+                url: "Accommodation-check-availability",
                 defaults: new { area = "", controller = "Accommodations", action = "CheckAvailability" },
                 namespaces: new[] { "PMS.Controllers" }
             );
