@@ -127,8 +127,7 @@
 
     $('#btnCheckAvailability').click(function () {
         $.ajax({
-            url: '@Url.Action("CheckAvailability", "Accomm" +
-                 "odations")',
+            url: '@Url.Action("CheckAvailability", "Accommodations")',
             data: $("#frmConfirmBooking").serialize()
 		})
 		.done(function (response) {
