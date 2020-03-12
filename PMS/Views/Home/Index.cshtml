@@ -209,17 +209,17 @@
                                 var thumbnailURL = thumbnailPicture != null ? thumbnailPicture.Picture.URL : "default-image.jpg";
 
                                 <div class="item">
-                                    <a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })" class="room" style="background-image: url(/images/site/@thumbnailURL);"></a>
+                                    <a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })" class="room" style="background-image: url(/images/site/@thumbnailURL);"></a>
                                     <div class="desc text-center">
                                         <h3>
-                                            <a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })">
+                                            <a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })">
                                                 @accommodationPackage.Name
                                             </a>
                                         </h3>
                                         <p class="price">
                                             @accommodationPackage.FeePerNight
                                         </p>
-                                        <p><a href="@Url.Action("Details", "Accommodations", new { accommodationPackageID = accommodationPackage.ID })" class="btn btn-primary btn-book">Book now!</a></p>
+                                        <p><a href="@Url.Action("Details", "Accommodation", new { accommodationPackageID = accommodationPackage.ID })" class="btn btn-primary btn-book">Book now!</a></p>
                                     </div>
                                 </div>
                             }
