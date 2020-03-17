@@ -16,21 +16,21 @@ namespace PMS
             routes.MapRoute(
                 name: "FEAccommodations",
                 url: "Accommodations",
-                defaults: new { area = "", controller = "Accommodation", action = "Index" },
+                defaults: new { area = "", controller = "Accommodations", action = "Index" },
                 namespaces: new[] { "PMS.Controllers" }
             );
 
             routes.MapRoute(
                 name: "AccommodationPackageDetails",
                 url: "accommodation-package/{accommodationPackageID}",
-                defaults: new { area = "", controller = "Accommodation", action = "Details" },
+                defaults: new { area = "", controller = "Accommodations", action = "Details" },
                 namespaces: new[] { "PMS.Controllers" }
             );
 
             routes.MapRoute(
                 name: "CheckAvailability",
                 url: "accommodation-check-availability",
-                defaults: new { area = "", controller = "Accommodation", action = "CheckAvailability" },
+                defaults: new { area = "", controller = "Accommodations", action = "CheckAvailability" },
                 namespaces: new[] { "PMS.Controllers" }
             );
 

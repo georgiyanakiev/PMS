@@ -6,16 +6,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
 namespace PMS.Controllers
 {
-    public class AccommodationController : Controller
+    public class AccommodationsController : Controller
     {
         AccommodationTypesService accommodationTypesService = new AccommodationTypesService();
         AccommodationPackagesService accommodationPackagesService = new AccommodationPackagesService();
         AccommodationsService accommodationsService = new AccommodationsService();
 
-        public ActionResult Index(int? accommodationTypeID, int accommodationPackageID)
+        public ActionResult Index(int accommodationTypeID, int? accommodationPackageID)
         {
             AccommodationsViewModels model = new AccommodationsViewModels();
 
@@ -23,7 +22,7 @@ namespace PMS.Controllers
 
             model.AccommodationPackages = accommodationPackagesService.GetAllAccommodationPackagesByAccommodationType(accommodationTypeID);
 
-            //model.SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
+            model.SelectedAccommodationPackageID = accommodationPackageID.HasValue ? accommodationPackageID.Value : model.AccommodationPackages.First().ID;
 
             model.Accommodations = accommodationsService.GetAllAccommodationsByAccommodationPackage(model.SelectedAccommodationPackageID);
 

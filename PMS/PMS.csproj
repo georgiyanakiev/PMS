@@ -189,7 +189,7 @@
     <Compile Include="Areas\Dashboard\ViewModels\RolesViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\UsersViewModels.cs" />
     <Compile Include="Code\Variables.cs" />
-    <Compile Include="Controllers\AccommodationController.cs" />
+    <Compile Include="Controllers\AccommodationsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -2140,8 +2140,8 @@
     <Content Include="Areas\Dashboard\Views\Nightaudit\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Housekeeping\Index.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Accommodation\Index.cshtml" />
-    <Content Include="Views\Accommodation\Details.cshtml" />
+    <Content Include="Views\Accommodations\Index.cshtml" />
+    <Content Include="Views\Accommodations\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
