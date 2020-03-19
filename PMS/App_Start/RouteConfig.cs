@@ -16,7 +16,7 @@ namespace PMS
             routes.MapRoute(
                 name: "FEAccommodations",
                 url: "Accommodations",
-                defaults: new { area = "", controller = "Accommodations", action = "Index" },
+                defaults: new { area = "Dashboard", controller = "Accommodations", action = "Index" },
                 namespaces: new[] { "PMS.Controllers" }
             );
 

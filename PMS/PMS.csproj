@@ -180,7 +180,6 @@
     <Compile Include="Areas\Dashboard\Controllers\NightauditController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\ReservationsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\RolesController.cs" />
-    <Compile Include="Areas\Dashboard\Controllers\RoomsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\UsersController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\AccommodationPackagesViewModels.cs" />
@@ -2187,7 +2186,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" />
+      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
