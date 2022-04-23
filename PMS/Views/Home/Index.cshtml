@@ -73,7 +73,21 @@
                                 <label for="date">Check-in:</label>
                                 <div class="form-field">
                                     <i class="icon icon-calendar2"></i>
-                                    <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+                                    <input type="date" id="date" class="form-control date" placeholder="Check-in date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="number">Reservation Number:</label>
+                                <div class="form-field">
+                                    <i class="icon fa-input-search"></i>
+                                    <input type="text" onkeypress="return /[0-9]/i.test(event.key)" id="search" pattern="\d*" class="form-control search" placeholder="Reservation Number:">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="text">Name:</label>
+                                <div class="form-field">
+                                    <i class="icon fa-input-search"></i>
+                                    <input type="search" onkeypress="return /[A-Z]/i.test(event.key)" id="search" class="form-control search" placeholder="Name:">
                                 </div>
                             </div>
                         </div>
@@ -82,7 +96,7 @@
                                 <label for="date">Check-out:</label>
                                 <div class="form-field">
                                     <i class="icon icon-calendar2"></i>
-                                    <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+                                    <input type="date" id="date" class="form-control date" placeholder="Check-out date">
                                 </div>
                             </div>
                         </div>
