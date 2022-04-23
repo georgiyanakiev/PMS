@@ -11,6 +11,12 @@ namespace PMS.Data
 {
     public class PMSContext : IdentityDbContext
     {
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<PMSContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
         public PMSContext() : base("PMSConnectionString")
         {
         }
