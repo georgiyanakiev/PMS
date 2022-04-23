@@ -78,10 +78,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReservationPicture .cs" />
+    <Compile Include="ReservationPackagePicture.cs" />
+    <Compile Include="ReservationPackage.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="Accommodation.cs" />
     <Compile Include="AccommodationPackage.cs" />
     <Compile Include="AccommodationPackagePicture.cs" />
     <Compile Include="AccommodationPicture.cs" />
+    <Compile Include="ReservationType.cs" />
     <Compile Include="AccommodationType.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="Picture.cs" />
