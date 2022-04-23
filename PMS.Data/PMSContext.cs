@@ -34,5 +34,10 @@ namespace PMS.Data
         public DbSet<AccommodationPicture> AccommodationPictures { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<ReservationType> ReservationTypes { get; set; }
+        public DbSet<ReservationPackage> ReservationPackages { get; set; }
+        public DbSet<ReservationPackagePicture> ReservationPackagePictures { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ReservationPicture> ReservationPictures { get; set; }
     }
 }

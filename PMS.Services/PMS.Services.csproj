@@ -78,8 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReservationsService.cs" />
+    <Compile Include="ReservationPackagesService.cs" />
     <Compile Include="AccommodationPackagesService.cs" />
     <Compile Include="AccommodationsService.cs" />
+    <Compile Include="ReservationTypesService.cs" />
     <Compile Include="AccommodationTypesService.cs" />
     <Compile Include="DashboardService.cs" />
     <Compile Include="PMSRolesManager.cs" />

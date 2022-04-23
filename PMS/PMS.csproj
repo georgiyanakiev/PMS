@@ -188,6 +188,7 @@
     <Compile Include="Areas\Dashboard\ViewModels\RolesViewModels.cs" />
     <Compile Include="Areas\Dashboard\ViewModels\UsersViewModels.cs" />
     <Compile Include="Code\Variables.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\AccommodationsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ReservationsViewModels.cs" />
     <Compile Include="ViewModels\AccommodationsViewModels.cs" />
     <Compile Include="ViewModels\HomeViewModels.cs" />
     <Compile Include="ViewModels\PageViewModels.cs" />
@@ -2186,7 +2188,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" />
+      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

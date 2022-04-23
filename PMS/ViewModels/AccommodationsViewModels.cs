@@ -23,6 +23,7 @@ namespace PMS.ViewModels
     public class CheckAccommodationAvailabilityViewModel
     {
         public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
         public int Duration { get; set; }
         public int NoOfAdults { get; set; }
         public int NoOfChildren { get; set; }
