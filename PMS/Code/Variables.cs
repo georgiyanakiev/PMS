@@ -7,8 +7,8 @@ namespace PMS.Code
 {
     public class Variables
     {
-        public const string HotelFullName = "Paradise Honor Resort";
-        public const string HotelShortName = "Paradise";
-        public const string HotelNameAbbreviate = "PHR";
+        public const string HotelFullName = "Paradiso Grande Resort";
+        public const string HotelShortName = "Paradiso";
+        public const string HotelNameAbbreviate = "PGR";
     }   
 }
