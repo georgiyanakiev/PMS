@@ -2136,13 +2136,17 @@
     <Content Include="Content\sass\_bootstrap-mincer.scss" />
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\style.css.map" />
-    <Content Include="Areas\Dashboard\Views\Reservations\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\ReservationsOLD\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Rooms\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Nightaudit\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Housekeeping\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\ReservationsOLD\_Action.cshtml" />
+    <Content Include="Areas\Dashboard\Views\ReservationsOLD\_Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\ReservationsOLD\_Listing.cshtml" />
     <Content Include="Areas\Dashboard\Views\Reservations\_Action.cshtml" />
     <Content Include="Areas\Dashboard\Views\Reservations\_Delete.cshtml" />
     <Content Include="Areas\Dashboard\Views\Reservations\_Listing.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Reservations\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Accommodations\Index.cshtml" />
     <Content Include="Views\Accommodations\Details.cshtml" />
@@ -2191,7 +2195,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" />
+      <UserProperties areas_4dashboard_4content_4vendor_4bootstrap_4css_4bootstrap_1css_1map__JsonSchema="" areas_4dashboard_4content_4vendor_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

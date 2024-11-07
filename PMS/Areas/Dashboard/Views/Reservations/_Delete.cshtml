@@ -1,11 +1,11 @@
-﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationActionModel
+﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationTypeActionModels
 
 @if (Model != null)
 {
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">
-                <span>Delete Accommodation</span>
+               <span>Delete Accommodation Type</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -16,31 +16,37 @@
                 <input type="hidden" name="ID" value="@Model.ID" />
             </form>
             <div class="alert alert-danger" role="alert">
-                Are you sure you want to delete this Accommodation?
+                Are you sure you want to delete this Accommodation Type?
             </div>
-        </div>
+         </div>
         <div class="modal-footer">
-            <button id="actionButton" type="button" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i> Delete</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-1"></i> Close</button>
+            <button id="actionButton" type="button" class="btn btn-danger" ><i class="fas fa-trash-alt mr-1"></i>Delete</button>
+            <button id="actionButton" type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-1"></i>Close</button>
+
         </div>
     </div>
 }
 
 <script>
-	$("#actionButton").click(function () {
-		$.ajax({
-			url: '@Url.Action("Delete", "Accommodations")',
-			type: "post",
-			data: $("#actionForm").serialize()
-		})
-		.done(function (response) {
-			if(response.Success)
-			{
-				window.location.href = "@Url.Action("Index", "Accommodations")";
-			}
-			else {
-				$(".errorDiv").html(response.Message);
-			}
-		});
-	});
+    $("#actionButton").click(function () {
+         $.ajax({
+             url: '@Url.Action("Delete","AccommodationTypes")',
+             type: "post",
+             data: $("#actionForm").serialize()
+
+         })
+             .done(function (response) {
+                 if (response.Success)
+                 {
+                     window.location.href = "@Url.Action("Index","AccommodationTypes")";
+                 }
+                 else
+                 {
+                     $(".errorDiv").html(response.Message);
+                 }
+            });
+    });
+
 </script>
+
+
