@@ -1,17 +1,17 @@
-﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationActionModel
+﻿@model PMS.Areas.Dashboard.ViewModels.AccommodationTypeActionModels
 
-@if (Model != null)
+@if(Model !=null)
 {
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">
                 @if (Model.ID > 0)
                 {
-                    <span>Edit Accommodation</span>
+                    <span>Edit Accommodation Type</span>
                 }
                 else
                 {
-                    <span>Create Accommodation</span>
+                    <span>Create Accommodation Type</span>
                 }
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -20,57 +20,49 @@
         </div>
         <div class="modal-body">
             <form id="actionForm">
-                <input type="hidden" name="ID" value="@Model.ID" />
-                <div class="form-group">
-                    <label>Accommodation Packages</label>
-                    <select class="form-control" name="AccommodationPackageID">
-                        @if (Model.AccommodationPackages != null)
-                        {
-                            foreach (var accommodationPackages in Model.AccommodationPackages)
-                            {
-                                <option value="@accommodationPackages.ID" @(accommodationPackages.ID == Model.AccommodationPackageID ? "selected" : string.Empty)>
-                                    @accommodationPackages.Name
-                                </option>
-                            }
-                        }
-                    </select>
-                </div>
+                <input type="hidden" name="ID" value="@Model.ID"/>
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" name="Name" placeholder="Enter Accommodation Name." value="@Model.Name">
+                    <input class="form-control" name="Name" placeholder="Enter Name" value="@Model.Name">
+                    
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="Description" placeholder="Enter Accommodation Description.">@Model.Description</textarea>
+                    <textarea class="form-control" name="Description" placeholder="Enter Accommodation Type Description">@Model.Description</textarea>
                 </div>
+                
             </form>
-
             <div class="errorDiv">
 
             </div>
         </div>
         <div class="modal-footer">
-            <button id="actionButton" type="button" class="btn btn-primary"><i class="fas fa-save mr-1"></i> Save</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-1"></i> Close</button>
+            <button id="actionButton" type="button" class="btn btn-primary"><i class="fas fa-save mr-1"></i>Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times mr-1"></i>Close</button>
+
         </div>
     </div>
 }
 
 <script>
-	$("#actionButton").click(function () {
-		$.ajax({
-			url: '@Url.Action("Action", "Accommodations")',
-			type: "post",
-			data: $("#actionForm").serialize()
-		})
-		.done(function (response) {
-			if(response.Success)
-			{
-				location.reload();
-			}
-			else {
-				$(".errorDiv").html(response.Message);
-			}
-		});
-	});
+    $("#actionButton").click(function () {
+         $.ajax({
+             url: '@Url.Action("Action","AccommodationTypes")',
+             type: "post",
+             data: $("#actionForm").serialize()
+
+         })
+             .done(function (response) {
+                 if (response.Success)
+                 {
+                     location.reload();
+                 }
+                 else
+                 {
+                     $(".errorDiv").html(response.Message);
+                 }
+            });
+    });
+
 </script>
+

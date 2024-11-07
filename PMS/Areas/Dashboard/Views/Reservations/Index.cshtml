@@ -1,130 +1,62 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-    <br />
-    <li style="background-image: url(/images/img_bg_1.jpg);">
-        <div class="overlay"></div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-                    <div class="slider-text-inner text-center">
-                        <h2>Discover &amp; Enjoy</h2>
-                        <h1>Everything you need in luxehotel</h1>
-                        <p><a class="btn btn-primary btn-demo" href="#"> View Detail</a> <a class="btn btn-primary btn-learn">Know More</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-<br />
-<br />
-<div id="colorlib-reservation">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 search-wrap">
-                <form method="post" class="colorlib-form">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="date">Check-in:</label>
-                                <div class="form-field">
-                                    <i class="icon icon-calendar2"></i>
-                                    <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="date">Check-out:</label>
-                                <div class="form-field">
-                                    <i class="icon icon-calendar2"></i>
-                                    <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="adults">Adults</label>
-                                <div class="form-field">
-                                    <i class="icon icon-arrow-down3"></i>
-                                    <select name="people" id="people" class="form-control">
-                                        <option value="#">1</option>
-                                        <option value="#">2</option>
-                                        <option value="#">3</option>
-                                        <option value="#">4</option>
-                                        <option value="#">5+</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="children">Children</label>
-                                <div class="form-field">
-                                    <i class="icon icon-arrow-down3"></i>
-                                    <select name="people" id="people" class="form-control">
-                                        <option value="#">1</option>
-                                        <option value="#">2</option>
-                                        <option value="#">3</option>
-                                        <option value="#">4</option>
-                                        <option value="#">5+</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="submit" name="submit" id="submit" value="Check In" class="btn btn-success btn-block">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+﻿@model PMS.ViewModels.ReservationsViewModels
+
+<div class="row">
+    <div class="col col-lg-12">
+        <h2>Reservations</h2>
+        <hr />
     </div>
 </div>
 
-<br />
-<br />
-<div id="colorlib-services">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 animate-box text-center">
-                <div class="services">
-                    <span class="icon">
-                        <i class="flaticon-reception"></i>
-                    </span>
-                    <h3>24/7 Front Desk</h3>
-                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+<div class="row mb-3">
+    <div class="col col-lg-12">
+        <form>
+            <div class="input-group">
+                <input type="text" name="searchterm" class="form-control" placeholder="Search." value="@Model.SearchTerm">
+
+                @if (Model.Reservations != null && Model.Reservations.Count() > 0)
+                {
+                    <select name="Reservations" class="form-control">
+                        <option value="0">
+                            Select Reservation
+                        </option>
+                        @foreach (var reservation in Model.Reservations)
+                        {
+                            <option value="@reservation.ID" @(reservation.ID == Model.ReservationPackages ? "selected" : string.Empty)>
+                                @reservation.Name;
+                            </option>
+                        }
+                    </select>
+                }
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search mr-1"></i> Search</button>
+                    <a class="btn btn-outline-secondary" href="@Url.Action("Index", "Reservations")"><i class="fas fa-redo-alt mr-1"></i> Reset</a>
+                    <button data-href="@Url.Action("Action", "Reservations")" class="data-btn btn btn-outline-success" type="button" data-toggle="modal" data-target="#actionModal"><i class="fas fa-plus mr-1"></i> Create</button>
                 </div>
             </div>
-            <div class="col-md-3 animate-box text-center">
-                <div class="services">
-                    <span class="icon">
-                        <i class="flaticon-herbs"></i>
-                    </span>
-                    <h3>Spa Suites</h3>
-                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                </div>
-            </div>
-            <div class="col-md-3 animate-box text-center">
-                <div class="services">
-                    <span class="icon">
-                        <i class="flaticon-car"></i>
-                    </span>
-                    <h3>Transfer Services</h3>
-                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                </div>
-            </div>
-            <div class="col-md-3 animate-box text-center">
-                <div class="services">
-                    <span class="icon">
-                        <i class="flaticon-cheers"></i>
-                    </span>
-                    <h3>Restaurant &amp; Bar</h3>
-                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
+<div class="row">
+    <div class="col col-lg-12">
+        @{
+            Html.RenderPartial("_Listing");
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="actionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+    </div>
+</div>
+
+<script>
+    $(".data-btn").click(function () {
+        $.ajax({
+            url: $(this).attr("data-href"),
+        })
+            .done(function (response) {
+                $("#actionModal .modal-dialog").html(response);
+            });
+    });
+</script>
