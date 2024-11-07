@@ -18,7 +18,7 @@ namespace PMS.ViewModels
     }
     public class ReservationPackageDetailsViewModel
     {
-        public ReservationPackage ReservationPackages { get; set; }
+        public ReservationPackage ReservationPackage { get; set; }
     }
 
     public class CheckReservationAvailabilityViewModel
